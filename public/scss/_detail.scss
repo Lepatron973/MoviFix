@@ -1,0 +1,26 @@
+.block-detail{
+    .block-detail-content{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        .content{
+            margin: 2rem;
+            
+        }
+        .text-content{
+            flex-basis: 28%;
+        }
+        .sub-content{
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .genre-content{
+            padding: 0;
+            display: flex;
+            li{
+                margin-right: 1rem;
+            }
+        }
+    }
+}

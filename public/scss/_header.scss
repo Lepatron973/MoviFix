@@ -23,6 +23,16 @@ header{
         }
         .nav-p3{
             display: flex;
+            .button{
+                padding: .4rem;
+                margin: .5rem;
+                &:first-child{
+                    background-color: #21384b;
+                    &:hover{
+                        background-color: $primaryColor;
+                    }
+                }
+            }
             .cart{
                 border: 1px solid $primaryColor;
                 padding: 1rem;
