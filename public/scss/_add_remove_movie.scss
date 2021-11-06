@@ -1,0 +1,21 @@
+.manage-movie{
+    display: flex;
+    h3{
+        font-size: 2rem;
+    }
+    .button{
+        padding: .5rem;
+    }
+    .block-form-content{
+        flex-basis: 45%;
+    }
+    .del-movie-content{
+        border-left: double 2px $primaryColor;
+        padding-left: 2rem;
+        &:nth-child(2),&:nth-child(1){
+            margin: auto;
+            text-align: center;
+        }
+        
+    }
+}

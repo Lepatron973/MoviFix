@@ -1,0 +1,47 @@
+.block-form-content{
+    h2{
+        text-align: center;
+    }
+    form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .input-block{
+            flex-basis: 45%;
+            label{
+                display: block;
+                margin: 1.5rem 0;
+            }
+            input[type=text],input[type=password],input[type=file]{
+                display: block;
+                padding: 1rem 0;
+                background: none;
+                color: $secondaryColor;
+                width: 90%;
+                border: 0px;
+                border-bottom: 1px solid wheat;
+            }
+            input[type=file]{
+                margin: -.6rem 0 .6rem 0;
+            }
+        }
+        :nth-child(7){
+            flex-basis: 90%;
+            textarea{
+                width: 90%;
+                color: $secondaryColor;
+                background: none;
+                border: 0px;
+                border-bottom: 1px solid wheat;
+            }
+        }
+        input[type=submit]{
+            flex-basis: 20%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px dashed;
+            cursor: pointer;
+            background-color: $primaryColor;
+        }
+    }
+}

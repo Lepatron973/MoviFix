@@ -1,0 +1,46 @@
+main{
+    position: relative;
+}
+img{
+    max-width: 100%;
+}
+.container{
+    @include container;
+}
+a{
+    text-decoration: none;
+}
+h1{
+    font-size: 5rem;
+}
+h2{
+    font-size: 4rem;
+}
+h3{
+    font-size: 3rem;
+}
+h4{
+    font-size: 2rem;
+}
+h5{
+    font-size: 1.5rem;
+}
+.block{
+    margin-top: 2rem;
+}
+.button{
+    @include button;
+    &:hover{
+        @include buttonHover;
+    }
+}
+a{
+    color: $secondaryColor;
+}
+.header-block{
+    background-image: url("https://1.bp.blogspot.com/-0WbLtsLIHzM/X9WRmBRQ8EI/AAAAAAAAGVs/EC0NCFWPOC8KYpaOrDywdWYuzS08HqU-ACLcBGAsYHQ/s2048/LE%2BTOP%2BDES%2BMEILLEURS%2BFILMS%2BLES%2BPLUS%2BATTENDUS%2BDE%2B2021.jpg");
+    margin: 2rem 0;
+    .block-1-content{
+        text-align: center;
+    }
+}

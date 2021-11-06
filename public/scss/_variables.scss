@@ -1,0 +1,20 @@
+$mainColor: #171d22;
+$primaryColor: #e4d804;
+$secondaryColor: #ffffff;
+
+@mixin container {
+    max-width: 80%;
+    margin: auto;
+}
+
+$liMargin: 1rem;
+
+@mixin button{
+    padding: 2rem;
+    border: 1px solid $primaryColor;
+    border-radius: 50px;
+}
+@mixin buttonHover{
+    background-color: $primaryColor;
+    color: $secondaryColor;
+}

@@ -1,0 +1,14 @@
+.block-inscription-content{
+    .inscription-image{
+        text-align: center;
+        img{
+            border: 1px double;
+            height: 25rem;
+            width: 25rem;
+            border-radius:50%;
+        }
+    }
+    h2{
+        text-align: center;
+    }
+}

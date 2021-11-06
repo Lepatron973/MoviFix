@@ -1,0 +1,256 @@
+.block-form-content h2 {
+  text-align: center; }
+.block-form-content form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .block-form-content form .input-block {
+    flex-basis: 45%; }
+    .block-form-content form .input-block label {
+      display: block;
+      margin: 1.5rem 0; }
+    .block-form-content form .input-block input[type=text], .block-form-content form .input-block input[type=password], .block-form-content form .input-block input[type=file] {
+      display: block;
+      padding: 1rem 0;
+      background: none;
+      color: #ffffff;
+      width: 90%;
+      border: 0px;
+      border-bottom: 1px solid wheat; }
+    .block-form-content form .input-block input[type=file] {
+      margin: -.6rem 0 .6rem 0; }
+  .block-form-content form :nth-child(7) {
+    flex-basis: 90%; }
+    .block-form-content form :nth-child(7) textarea {
+      width: 90%;
+      color: #ffffff;
+      background: none;
+      border: 0px;
+      border-bottom: 1px solid wheat; }
+  .block-form-content form input[type=submit] {
+    flex-basis: 20%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px dashed;
+    cursor: pointer;
+    background-color: #e4d804; }
+
+* {
+  list-style: none; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 0;
+  margin: 0;
+  background-color: #171d22;
+  color: #ffffff; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #171d22; }
+  header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem; }
+    header .header-content .nav-p1 {
+      flex-basis: 15%; }
+    header .header-content .nav-p2 ul {
+      display: flex; }
+      header .header-content .nav-p2 ul li {
+        margin-right: 1rem; }
+    header .header-content .nav-p3 {
+      display: flex; }
+      header .header-content .nav-p3 .cart {
+        border: 1px solid #e4d804;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 0 1rem; }
+        header .header-content .nav-p3 .cart i {
+          margin-right: .3rem; }
+
+.block-1::before {
+  content: "";
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+.block-1 {
+  background-image: url("https://wallpapercave.com/wp/wp3173712.jpg");
+  background-size: cover;
+  position: relative; }
+  .block-1 .block-1-content {
+    position: relative;
+    padding: 15rem 0; }
+    .block-1 .block-1-content h1, .block-1 .block-1-content .button {
+      position: relative;
+      z-index: 2; }
+    .block-1 .block-1-content div {
+      text-align: center; }
+
+.block-2 .block-2-content .header-block-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .block-2 .block-2-content .header-block-2 ul {
+    display: flex; }
+    .block-2 .block-2-content .header-block-2 ul li {
+      margin-right: 1rem; }
+.block-2 .block-2-content .movies {
+  display: flex; }
+  .block-2 .block-2-content .movies .movie {
+    margin: 1rem; }
+    .block-2 .block-2-content .movies .movie figure {
+      display: flex;
+      flex-flow: column;
+      margin: auto; }
+      .block-2 .block-2-content .movies .movie figure img {
+        border-radius: .5rem; }
+      .block-2 .block-2-content .movies .movie figure figcaption {
+        margin: 2px 0;
+        background-color: #222;
+        border: 1px solid;
+        border-radius: .5rem;
+        color: #e4d804;
+        font: italic smaller sans-serif;
+        font-size: 2em;
+        padding: 3px;
+        text-align: center; }
+    .block-2 .block-2-content .movies .movie .movie-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+    .block-2 .block-2-content .movies .movie .movie-info-bottom {
+      display: flex;
+      justify-content: center; }
+      .block-2 .block-2-content .movies .movie .movie-info-bottom p {
+        border: 1px solid #e4d804;
+        font-size: 2rem;
+        border-radius: 50px;
+        padding: 1rem;
+        transition: transform 1s, color 5s; }
+        .block-2 .block-2-content .movies .movie .movie-info-bottom p:hover {
+          cursor: pointer;
+          transform: rotate(30deg) scale(1.5);
+          color: #e4d804; }
+
+.block-3 {
+  padding: 5rem 0;
+  background-color: #222; }
+
+.block-4 .block-4-content {
+  display: flex; }
+  .block-4 .block-4-content div {
+    flex-basis: 50%; }
+
+main {
+  position: relative; }
+
+img {
+  max-width: 100%; }
+
+.container {
+  max-width: 80%;
+  margin: auto; }
+
+a {
+  text-decoration: none; }
+
+h1 {
+  font-size: 5rem; }
+
+h2 {
+  font-size: 4rem; }
+
+h3 {
+  font-size: 3rem; }
+
+h4 {
+  font-size: 2rem; }
+
+h5 {
+  font-size: 1.5rem; }
+
+.block {
+  margin-top: 2rem; }
+
+.button {
+  padding: 2rem;
+  border: 1px solid #e4d804;
+  border-radius: 50px; }
+  .button:hover {
+    background-color: #e4d804;
+    color: #ffffff; }
+
+a {
+  color: #ffffff; }
+
+.header-block {
+  background-image: url("https://1.bp.blogspot.com/-0WbLtsLIHzM/X9WRmBRQ8EI/AAAAAAAAGVs/EC0NCFWPOC8KYpaOrDywdWYuzS08HqU-ACLcBGAsYHQ/s2048/LE%2BTOP%2BDES%2BMEILLEURS%2BFILMS%2BLES%2BPLUS%2BATTENDUS%2BDE%2B2021.jpg");
+  margin: 2rem 0; }
+  .header-block .block-1-content {
+    text-align: center; }
+
+.block-inscription-content .inscription-image {
+  text-align: center; }
+  .block-inscription-content .inscription-image img {
+    border: 1px double;
+    height: 25rem;
+    width: 25rem;
+    border-radius: 50%; }
+.block-inscription-content h2 {
+  text-align: center; }
+
+.block-contact-content h2 {
+  text-align: center; }
+
+.manage-movie {
+  display: flex; }
+  .manage-movie h3 {
+    font-size: 2rem; }
+  .manage-movie .button {
+    padding: .5rem; }
+  .manage-movie .block-form-content {
+    flex-basis: 45%; }
+  .manage-movie .del-movie-content {
+    border-left: double 2px #e4d804;
+    padding-left: 2rem; }
+    .manage-movie .del-movie-content:nth-child(2), .manage-movie .del-movie-content:nth-child(1) {
+      margin: auto;
+      text-align: center; }
+
+.block-profil-content .profil-image {
+  text-align: center; }
+  .block-profil-content .profil-image img {
+    border: 1px double;
+    border-radius: 50%; }
+.block-profil-content h2 {
+  text-align: center; }
+
+footer {
+  margin-top: 2rem;
+  background-color: #222;
+  padding: 1rem 0; }
+  footer .footer-part-1 {
+    display: flex;
+    justify-content: space-between; }
+    footer .footer-part-1 strong {
+      font-size: 1.8rem;
+      text-align: center; }
+    footer .footer-part-1 ul {
+      padding: 0; }
+  footer .footer-part-2 {
+    display: flex;
+    justify-content: center; }
+
+/*# sourceMappingURL=style.css.map */

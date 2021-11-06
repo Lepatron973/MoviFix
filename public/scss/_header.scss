@@ -1,0 +1,37 @@
+header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #171d22;
+    .header-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem;
+
+        .nav-p1{
+            flex-basis: 15%;
+            
+        }
+        .nav-p2{
+            ul{
+                display: flex;
+                li{
+                    margin-right: $liMargin;
+                }
+            }
+        }
+        .nav-p3{
+            display: flex;
+            .cart{
+                border: 1px solid $primaryColor;
+                padding: 1rem;
+                border-radius: 4px;
+                margin: 0 1rem;
+                i{
+                    margin-right: .3rem;
+                }
+            }
+        }
+    }
+}
