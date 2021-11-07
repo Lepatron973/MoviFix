@@ -33,6 +33,11 @@ header{
                     }
                 }
             }
+            .off{
+                &:hover{
+                    background-color: rgb(170, 57, 42);
+                }
+            }
             .cart{
                 border: 1px solid $primaryColor;
                 padding: 1rem;
