@@ -5,10 +5,16 @@
         align-items: flex-start;
         .content{
             margin: 2rem;
-            
+            img{
+                height: 670px;
+
+            }
         }
         .text-content{
+            height: 650px;
             flex-basis: 28%;
+            padding: 1rem;
+            background-color: #222;
         }
         .sub-content{
             display: flex;
