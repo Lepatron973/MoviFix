@@ -1,9 +1,11 @@
 .block-profil-content{
     .profil-image{
-        text-align: center;
+        margin: auto;
+        max-width: 40rem;
         img{
             border: 1px double;
             border-radius:50%;
+            max-width: 100%;
         }
     }
     h2{
