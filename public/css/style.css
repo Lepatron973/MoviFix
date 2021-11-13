@@ -9,7 +9,7 @@
     .block-form-content form .input-block label {
       display: block;
       margin: 1.5rem 0; }
-    .block-form-content form .input-block input[type=text], .block-form-content form .input-block input[type=password], .block-form-content form .input-block input[type=file] {
+    .block-form-content form .input-block input[type=text], .block-form-content form .input-block input[type=password], .block-form-content form .input-block input[type=file], .block-form-content form .input-block input[type=email] {
       display: block;
       padding: 1rem 0;
       background: none;
@@ -19,9 +19,9 @@
       border-bottom: 1px solid wheat; }
     .block-form-content form .input-block input[type=file] {
       margin: -.6rem 0 .6rem 0; }
-  .block-form-content form :nth-child(7) {
+  .block-form-content form .text-area {
     flex-basis: 90%; }
-    .block-form-content form :nth-child(7) textarea {
+    .block-form-content form .text-area textarea {
       width: 90%;
       color: #ffffff;
       background: none;
@@ -67,6 +67,15 @@ header {
         margin-right: 1rem; }
     header .header-content .nav-p3 {
       display: flex; }
+      header .header-content .nav-p3 .button {
+        padding: .4rem;
+        margin: .5rem; }
+        header .header-content .nav-p3 .button:first-child {
+          background-color: #21384b; }
+          header .header-content .nav-p3 .button:first-child:hover {
+            background-color: #e4d804; }
+      header .header-content .nav-p3 .off:hover {
+        background-color: #aa392a; }
       header .header-content .nav-p3 .cart {
         border: 1px solid #e4d804;
         padding: 1rem;
@@ -107,8 +116,10 @@ header {
     .block-2 .block-2-content .header-block-2 ul li {
       margin-right: 1rem; }
 .block-2 .block-2-content .movies {
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap; }
   .block-2 .block-2-content .movies .movie {
+    flex-basis: 30%;
     margin: 1rem; }
     .block-2 .block-2-content .movies .movie figure {
       display: flex;
@@ -116,6 +127,8 @@ header {
       margin: auto; }
       .block-2 .block-2-content .movies .movie figure img {
         border-radius: .5rem; }
+      .block-2 .block-2-content .movies .movie figure .home-movie-image {
+        max-height: 330px; }
       .block-2 .block-2-content .movies .movie figure figcaption {
         margin: 2px 0;
         background-color: #222;
@@ -128,6 +141,7 @@ header {
         text-align: center; }
     .block-2 .block-2-content .movies .movie .movie-info {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: center; }
     .block-2 .block-2-content .movies .movie .movie-info-bottom {
@@ -201,6 +215,28 @@ a {
   .header-block .block-1-content {
     text-align: center; }
 
+.block-detail .block-detail-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; }
+  .block-detail .block-detail-content .content {
+    margin: 2rem; }
+    .block-detail .block-detail-content .content img {
+      height: 670px; }
+  .block-detail .block-detail-content .text-content {
+    height: 650px;
+    flex-basis: 28%;
+    padding: 1rem;
+    background-color: #222; }
+  .block-detail .block-detail-content .sub-content {
+    display: flex;
+    justify-content: space-between; }
+  .block-detail .block-detail-content .genre-content {
+    padding: 0;
+    display: flex; }
+    .block-detail .block-detail-content .genre-content li {
+      margin-right: 1rem; }
+
 .block-inscription-content .inscription-image {
   text-align: center; }
   .block-inscription-content .inscription-image img {
@@ -230,10 +266,12 @@ a {
       text-align: center; }
 
 .block-profil-content .profil-image {
-  text-align: center; }
+  margin: auto;
+  max-width: 40rem; }
   .block-profil-content .profil-image img {
     border: 1px double;
-    border-radius: 50%; }
+    border-radius: 50%;
+    max-width: 100%; }
 .block-profil-content h2 {
   text-align: center; }
 

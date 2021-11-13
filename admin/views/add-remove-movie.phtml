@@ -1,0 +1,103 @@
+<section class="block block-1 header-block">
+    <div class="block-1-content container">
+        <h1>
+           Add - Remove - Update
+        </h1>
+    </div>
+</section>
+ <!-- start Block 1 section movies  -->
+<section class="block-inscription">
+    <div class="block-inscription-content container">
+        <div class="inscription-image">
+            <img src="https://cdn.futura-sciences.com/buildsv6/images/wide1920/1/8/a/18a0ef0c93_50178875_oeil-sauron.jpg" alt="">
+        </div>
+        <h2>Un petit coups de balais ou on salit encore plus ?</h2>
+        <div class="manage-movie">
+            <div class="block-form-content container">
+                <h3> Nouveau </h3>
+                <form method="POST" action="./?path=add-remove-movie&addMovie=1" enctype="multipart/form-data">
+                    <div class="input-block">
+                        <label for="title"> Titre </label>
+                        <input type="text" name="title" >
+                    </div>
+                    <div class="input-block">
+                        <label for="duration">Durée</label>
+                        <input type="text" name="duration" >
+                    </div>
+                    <div class="input-block">
+                        <label for="release_date"> Date de sortie</label>
+                        <input type="text" name="release_date">
+                    </div>
+                    <div class="input-block">
+                        <label for="price"> Prix </label>
+                        <input type="text" name="price">
+                    </div> 
+                    <div class="input-block">
+                        <label for="budget"> Budget </label>
+                        <input type="text" name="budget">
+                    </div>
+                    <div class="input-block">
+                        <label for="revenu"> Revenu </label>
+                        <input type="text" name="revenu">
+                    </div> 
+                    <div class="input-block">
+                        <label for="image">Image</label>
+                        <input type="file" name="image" >
+                    </div> 
+                    <div class="input-block text-area">
+                        <label for="description">Description</label>
+                        <textarea name="description"></textarea>
+                    </div> 
+                    <input type="submit" value="Mettre à jour">
+                </form>
+            </div>
+            
+            <div class="del-movie-content block-form-content container">
+                <h3> Mettre à jour / Supprimer </h3>
+                <select name="list-movie" class="button">
+                    <option value="none">Chossissez un film</option>
+                    <?php foreach($datas as $movie): ?>
+                        <option value="<?= $movie['id'] ?>"><?= $movie['title'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <form method="POST" action="./?path=add-remove-movie&updateMovie=1" enctype="multipart/form-data" >
+                    <input type="hidden" name="id">
+                    <div class="input-block">
+                        <label for="title"> Titre </label>
+                        <input type="text" name="title" >
+                    </div>
+                    <div class="input-block">
+                        <label for="duration">Durée</label>
+                        <input type="text" name="duration" >
+                    </div>
+                    <div class="input-block">
+                        <label for="release_date"> Date de sortie</label>
+                        <input type="text" name="release_date">
+                    </div>
+                    <div class="input-block">
+                        <label for="price"> Prix </label>
+                        <input type="text" name="price">
+                    </div> 
+                    <div class="input-block">
+                        <label for="budget"> Budget </label>
+                        <input type="text" name="budget">
+                    </div>
+                    <div class="input-block">
+                        <label for="revenu"> Revenu </label>
+                        <input type="text" name="revenu">
+                    </div> 
+                    <div class="input-block">
+                        <label for="image">Image</label>
+                        <input type="file" name="image">
+                    </div> 
+                    <div class="input-block text-area">
+                        <label for="description">Description</label>
+                        <textarea name="description"></textarea>
+                    </div> 
+                    <input type="submit" value="Mettre à jour">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

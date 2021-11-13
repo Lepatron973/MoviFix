@@ -14,30 +14,26 @@
         <h2>Qui est tu !? Non je rigole.. sérieux.... présente moi tes papiers !</h2>
         <div class="block-form-content container">
 
-            <form action="POST">
+            <form method="POST" action="?path=inscription&addUser=1" enctype="multipart/form-data">
                 <div class="input-block">
                     <label for="firstname"> Nom</label>
-                    <input type="text" name="firstname" value="Starski"></div>
+                    <input type="text" name="firstname" required></div>
                 <div class="input-block">
                     <label for="lastname">Prenom</label>
-                    <input type="text" name="lastname" value="Ema"></div>
+                    <input type="text" name="lastname" required></div>
                 <div class="input-block">
                     <label for="email"> E-mail </label>
-                    <input type="text" name="email"></div>
+                    <input type="email" name="email" required></div>
                 <div class="input-block">
                     <label for="image">Un petit Avatar ?</label>
-                    <input type="file" name="image" value="tets">
+                    <input type="file" name="image" accept=".jpg, .jpeg, .png, .svg">
                 </div> 
                 <div class="input-block">
                     <label for="password"> Mot depasse </label>
-                    <input type="password" name="password"></div>
+                    <input type="password" name="password" required></div>
                 <div class="input-block">
                     <label for="confirm-password">Confirmez votre mots de passe</label>
-                    <input type="password" name="confirm-password">
-                </div> 
-                <div class="input-block">
-                    <label for="message">Message</label>
-                    <textarea name="message"></textarea>
+                    <input type="password" name="confirm-password" required>
                 </div> 
                 <input type="submit" value="enregistrer">
             </form>

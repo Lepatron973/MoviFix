@@ -9,24 +9,28 @@
 <section class="block-profil">
     <div class="block-profil-content container">
         <div class="profil-image">
-            <img src="https://www.gala.fr/imgre/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2F2020.2F10.2F10.2Fb6dc622e-40b2-4ceb-bc07-f5ba40a644ee.2Ejpeg/480x480/quality/80/focus-point/492%2C210/photos-filip-nikolic-nouvelle-tete-pour-sa-sublime-fille-sasha.jpg" alt="">
+            <?php if($_SESSION['user']['image'] != null): ?>
+                <img src="/public/ressources/uploads/<?php $_SESSION['user']['image'] ?>" alt="photo de profile">
+            <?php else: ?>
+                <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="photo de profile">
+            <?php endif; ?>
         </div>
         <h2>Un changement d'identité !?</h2>
         <div class="block-form-content container">
 
-            <form action="POST">
+            <form method="POST" action="./?path=profile&update=1" enctype="multipart/form-data">
                 <div class="input-block">
                     <label for="firstname"> Nom</label>
-                    <input type="text" name="firstname" value="Starski"></div>
+                    <input type="text" name="firstname" value="<?= $_SESSION['user']['firstname'] ?>"></div>
                 <div class="input-block">
                     <label for="lastname">Prenom</label>
-                    <input type="text" name="lastname" value="Ema"></div>
+                    <input type="text" name="lastname" value="<?= $_SESSION['user']['lastname'] ?>"></div>
                 <div class="input-block">
                     <label for="email"> E-mail </label>
-                    <input type="text" name="email"></div>
+                    <input type="email" name="email" value="<?= $_SESSION['user']['email'] ?>"></div>
                 <div class="input-block">
                     <label for="image">Un petit Avatar ?</label>
-                    <input type="file" name="image" value="tets">
+                    <input type="file" name="image">
                 </div> 
                 <div class="input-block">
                     <label for="password"> Mot depasse </label>
@@ -34,10 +38,6 @@
                 <div class="input-block">
                     <label for="confirm-password">Confirmez votre mots de passe</label>
                     <input type="password" name="confirm-password">
-                </div> 
-                <div class="input-block">
-                    <label for="message">Message</label>
-                    <textarea name="message"></textarea>
                 </div> 
                 <input type="submit" value="enregistrer">
             </form>
