@@ -1,17 +1,11 @@
- 
-  const  moviesBlock = document.querySelector(".movies");
+ const  moviesBlock = document.querySelector(".movies");
+ const  cartAmount = document.querySelector('.cart span');
+setCart();
 
-  
 getMovieFromApiAndAdd(moviesBlock)
-  
-  
-  
-  // document.cookie = 
 
-  // console.log(document.cookie)
-  // enable = navigator.cookieEnabled
 
-  // console.log(enable)
+
 
 
 

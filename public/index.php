@@ -21,7 +21,7 @@
         switch($_GET['path']){
             
             case "home":
-                var_dump($_COOKIE);
+                
                 $controller = new Controllers\MovieController($page);
                 $controller->addStyle("glide.core.min");
                 $controller->addStyle("glide.theme.min");

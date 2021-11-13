@@ -1,0 +1,9 @@
+{
+  "name": "Movifix",
+  "host_permissions": [
+    "*://localhost/Moviflix"
+  ],
+  "permissions": [
+    "cookies"
+  ]
+}

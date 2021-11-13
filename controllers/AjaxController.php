@@ -37,7 +37,9 @@
 
                 break; 
                 case "getMovie":
-                    var_dump( $this->controller->pullOneMovie($json) );
+                    $json = $this->parseJsonData();
+                    
+                    echo json_encode( $this->controller->pullOneMovie($json) );
  
                  break; 
             }

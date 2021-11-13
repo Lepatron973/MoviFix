@@ -11,7 +11,7 @@
             $table = "movies";
             $movieToGet = array(
                 "table" =>  "movies",
-                "ref" => "id",
+                "ref" => "id_api_movie",
                 "value" => $id
             );
             $datas = $this->getOneByRef($movieToGet);
