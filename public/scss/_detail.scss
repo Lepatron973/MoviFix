@@ -15,6 +15,7 @@
             flex-basis: 28%;
             padding: 1rem;
             background-color: #222;
+            position: relative;
         }
         .sub-content{
             display: flex;
@@ -26,6 +27,22 @@
             display: flex;
             li{
                 margin-right: 1rem;
+            }
+        }
+        .add-cart-content{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: $primaryColor;
+            &:hover{
+                cursor: pointer;
+            }
+            p{
+                margin: 1rem;
+                font-size: 3rem;
             }
         }
     }

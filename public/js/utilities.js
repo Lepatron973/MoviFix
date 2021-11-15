@@ -34,7 +34,7 @@ function createMovieDiv(element,tmdbUrl,imageSizePath){
             </div>
         </div>
         <div class="movie-info movie-info-bottom">
-            <p><i class="fas addCart fa-cart-plus" index=${element.id}></i></p>
+            <a href="./?path=addCart&id=${element.id}"><i class="fas addCart fa-cart-plus" index=${element.id}></i></a>
         </div>
     </div>
         `
@@ -92,7 +92,7 @@ function getMovieFromApiAndAdd(moviesBlock){
     const btnAddCart = document.querySelectorAll(".addCart");
     for(let btn of btnAddCart){
         
-        btn.addEventListener("click", addCart)
+        // btn.addEventListener("click", addCart)
     }
       // console.log(movies)
       options.body = JSON.stringify( ids);
@@ -147,139 +147,150 @@ function addMovieFromApi(req,movies,options){
     })
   }
 
-  function addCart(){
-    const id = this.getAttribute('index');
-    options.body = JSON.stringify(id)
-    const req = new Request(startPath+"getMovie",options);
-    fetch(req)
-    .then(res => {return res.json()})
-    .then(res =>{
-      let array =[];
-      for( let element in res){
+//   function addCart(){
+//     const id = this.getAttribute('index');
+//     options.body = JSON.stringify(id)
+//     const req = new Request(startPath+"getMovie",options);
+//     fetch(req)
+//     .then(res => {return res.json()})
+//     .then(res =>{
+//       let array =[];
+//       for( let element in res){
        
-        array.push(res[element])
-      }
-      if(!getCookie('panier')){
+//         array.push(res[element])
+//       }
+//       if(!getCookie('panier')){
 
-        setCookie('panier','indexPanier',cookieStringify([array]))
-      }
-      else{
-        panier = getCookie("panier")
-        panier.push(array)
-        setCookie('panier','indexPanier',cookieStringify(panier))
-        panier = getCookie('panier')
-        console.log(panier)
-        setCart()
-      }
-    })
-
-
-  }
-  /* 
-    fonction permettant de transformer un tableau en string selon un format précis
-    (avec pour séparateur des ',')
-    pour ensuite l'envoyer dans un cookie
-    @param array
-    @return string
- */
-  function cookieStringify(arrays){
-    let  string ="";
-    
-    for (let array of arrays) {
-      for(element of array){
-
-        element = typeof element == "string" ? element.replace(' ','_') : element
-        string += String(element) + "#";
-      }
-      string = string.substring(0,string.length -1)
-      string += String(element) + "&";
-    }
-    string = string.substring(0,string.length -1)
-
-    return string;
-  }
-   /* 
-    fonction permettant de transformer une string issue d'un cookie(format cle=valeur) en tableau
-    PS: pour utiliser cette fonction il faudra obligatoirement avoir
-    utilisé en amont la fonction cookieStringify() pour créer la string qui a été envoyé dans le cookie;
-    @param string
-    @return array
-*/
-  function cookieParse(string){
-    
-    let arrays = string.substring(string.indexOf('=')+1)
-    arrays = arrays.split('&')
-    for (let key in arrays) {
-      arrays[key] = arrays[key].split('#')
-    }
-    return arrays;
-  }
-
-  /* 
-  fonction permettant de créer un cookie 
-  @parma string keyIndex: nom de l'élément de référence situé juste avant le cookie que l'on veut ajouter: ex: userNameIndex
-  @param string key: nom de la valeur que l'on veut ajouter ex: userName
-  @param array|string value: valeur de l'élément à ajouter : ex: emma
-  PS: si on veut envoyer plusieurs valeurs avec cette fonction il faut les mettres dans tableau qui lui
-  même comporte un tableau de donnée ex: [ [data1,data2,etc]]
-  et utiliser la fonction cookieStringify() pour formater la valeur 
-*/
-function setCookie(keyIndex,key,value){
-    document.cookie = `${keyIndex}=tempValue; SameSite=None; Secure`;
-    document.cookie = `${keyIndex}=index; SameSite=None; Secure`;
-    document.cookie = `${key}="tempValue"; SameSite=None; Secure`;
-    document.cookie = `${key}=${value}; SameSite=None; Secure`;
-}
-/* 
-    fonction permettant de récupérer un cookie grâce à l'index
-    de référence utilisé dans la fonction setCookie
-    @param keyIndex: nom de l'index de référence
-    @return array: renvoi un tableau simple contenant les valeur du cookie demandé
- */
-function getCookie(keyIndex){
-  
-    const sanitizedCookie = document.cookie.replaceAll(' ','');
-    // const sanitizedCookie = document.cookie
-    const cookies = sanitizedCookie.split(';');
-    let refIndex = cookies.indexOf(`${keyIndex}=index`);
-    if(refIndex === -1){
-        // alert("la clé n'est pas présente dans le tableau ou elle dispose d'un espace à la sortie du cookie ce qui la rend donc différent de lélément demandé")
-        return false;
-    }else
-    refIndex +=1;
-    
-    // console.log(refIndex)
-    let arrays = cookieParse(cookies[refIndex])
-    let cookieParsed = [];
-    for(let array of arrays){
-      for(let key in array){
-
-        if(parseInt(array[key]))
-          array[key] = parseInt(array[key])
-        else if( array[key] == "true" || array[key] == "false" )
-          array[key] = new Boolean(array[key]);
-        else
-          array[key] = array[key].replaceAll('_',' ');
+//         setCookie('panier',cookieStringify([array]));
         
-        }
-        cookieParsed.push(array);
+//       }
+//       else{
+//         panier = getCookie("panier");
+//         // for(let index in panier){
+//         //   if(panier[index][1] == array[1]){
+//         //     console.log(panier[index][1])
+//         //     panier[index][panier[index].length-1] = parseInt(panier[index][panier[index].length-1]) + 1;
+//         //   }else{
 
-    }
+//           //   }
+//           // }
+//           // console.log(panier)
+//         panier.push(array);
+//         setCookie('panier',cookieStringify(panier))
+//         panier = getCookie('panier');
+//         console.log(panier);
+       
+//       }
+//     })
+
+
+//   }
+//   /* 
+//     fonction permettant de transformer un tableau en string selon un format précis
+//     (avec pour séparateur des '#')
+//     pour ensuite l'envoyer dans un cookie
+//     @param array
+//     @return string
+//  */
+//   function cookieStringify(arrays){
+//     let  string ="";
     
-    return cookieParsed;
-}
+//     for (let array of arrays) {
+//       for(element of array){
 
-function setCart(){
-  if(!getCookie('panier')){
-    cartAmount.innerHTML = 0,00
-    let panier = null;
-  }else{
-    panier = getCookie('panier')
-    console.log(panier)
-    let amount = 0;
-    for (const movie of panier) {
-     amount += parseInt(movie[7]);
-    }
-    cartAmount.innerHTML = amount
-  }
-}
+//         element = typeof element == "string" ? element.replace(' ','_') : element
+//         string += String(element) + "#";
+//       }
+//       string = string.substring(0,string.length -1)
+//       string += String(element) + "&";
+//     }
+//     string = string.substring(0,string.length -1)
+
+//     return string;
+//   }
+//    /* 
+//     fonction permettant de transformer une string issue d'un cookie(format cle=valeur) en tableau
+//     PS: pour utiliser cette fonction il faudra obligatoirement avoir
+//     utilisé en amont la fonction cookieStringify() pour créer la string qui a été envoyé dans le cookie;
+//     @param string
+//     @return array
+// */
+//   function cookieParse(string){
+//     // console.log(string)
+//     let arrays = string.substring(string.indexOf('=')+1)
+//     arrays = arrays.split('&')
+//     for (let key in arrays) {
+//       arrays[key] = arrays[key].split('#')
+//     }
+//     return arrays;
+//   }
+
+//   /* 
+//   fonction permettant de créer un cookie 
+//   @parma string keyIndex: nom de l'élément de référence situé juste avant le cookie que l'on veut ajouter: ex: userNameIndex
+//   @param string key: nom de la valeur que l'on veut ajouter ex: userName
+//   @param array|string value: valeur de l'élément à ajouter : ex: emma
+//   PS: si on veut envoyer plusieurs valeurs avec cette fonction il faut les mettres dans tableau qui lui
+//   même comporte un tableau de donnée ex: [ [data1,data2,etc]]
+//   et utiliser la fonction cookieStringify() pour formater la valeur 
+// */
+// function setCookie(key,value){
+//     document.cookie = `${key}=tempValue; SameSite=None; Secure`;
+//     document.cookie = `${key}=index; SameSite=None; Secure`;
+//     document.cookie = `${key}Index="tempValue"; SameSite=None; Secure`;
+//     document.cookie = `${key}Index=${value}; SameSite=None; Secure`;
+// }
+// /* 
+//     fonction permettant de récupérer un cookie grâce à l'index
+//     de référence utilisé dans la fonction setCookie
+//     @param keyIndex: nom de l'index de référence
+//     @return array: renvoi un tableau simple contenant les valeur du cookie demandé
+//  */
+// function getCookie(keyIndex){
+  
+//     const sanitizedCookie = document.cookie.replaceAll(' ','');
+//     const cookies = sanitizedCookie.split(';');
+//     let refIndex = cookies.indexOf(`${keyIndex}=index`);
+   
+//     if(refIndex === -1){
+//         // alert("la clé n'est pas présente dans le tableau ou elle dispose d'un espace à la sortie du cookie ce qui la rend donc différent de lélément demandé")
+//         return false;
+//     }else
+//     refIndex +=1;
+    
+//     // console.log(refIndex)
+//     let arrays = cookieParse(cookies[refIndex])
+//     let cookieParsed = [];
+//     for(let array of arrays){
+//       for(let key in array){
+
+//         if(parseInt(array[key]))
+//           array[key] = parseInt(array[key])
+//         else if( array[key] == "true" || array[key] == "false" )
+//           array[key] = new Boolean(array[key]);
+//         else
+//           array[key] = array[key].replaceAll('_',' ');
+        
+//         }
+//         // on ajoute la quantité par défaut
+//         array.push(1);
+//         cookieParsed.push(array);
+
+//     }
+    
+//     return cookieParsed;
+// }
+
+// function setCart(){
+//   if(!getCookie('panier')){
+//     cartAmount.innerHTML = 0,00
+//     let panier = null;
+//   }else{
+//     panier = getCookie('panier')
+//     let amount = 0;
+//     for (const movie of panier) {
+//      amount += parseInt(movie[7]);
+//     }
+//     cartAmount.innerHTML = amount
+//   }
+// }

@@ -81,6 +81,9 @@ header {
         padding: 1rem;
         border-radius: 4px;
         margin: 0 1rem; }
+        header .header-content .nav-p3 .cart:hover {
+          cursor: pointer;
+          background-color: #e4d804; }
         header .header-content .nav-p3 .cart i {
           margin-right: .3rem; }
 
@@ -147,13 +150,14 @@ header {
     .block-2 .block-2-content .movies .movie .movie-info-bottom {
       display: flex;
       justify-content: center; }
-      .block-2 .block-2-content .movies .movie .movie-info-bottom p {
+      .block-2 .block-2-content .movies .movie .movie-info-bottom a {
+        margin: 2rem 0 0;
         border: 1px solid #e4d804;
         font-size: 2rem;
         border-radius: 50px;
         padding: 1rem;
         transition: transform 1s, color 5s; }
-        .block-2 .block-2-content .movies .movie .movie-info-bottom p:hover {
+        .block-2 .block-2-content .movies .movie .movie-info-bottom a:hover {
           cursor: pointer;
           transform: rotate(30deg) scale(1.5);
           color: #e4d804; }
@@ -201,6 +205,7 @@ h5 {
 .button {
   padding: 2rem;
   border: 1px solid #e4d804;
+  cursor: pointer;
   border-radius: 50px; }
   .button:hover {
     background-color: #e4d804;
@@ -227,7 +232,8 @@ a {
     height: 650px;
     flex-basis: 28%;
     padding: 1rem;
-    background-color: #222; }
+    background-color: #222;
+    position: relative; }
   .block-detail .block-detail-content .sub-content {
     display: flex;
     justify-content: space-between; }
@@ -236,6 +242,19 @@ a {
     display: flex; }
     .block-detail .block-detail-content .genre-content li {
       margin-right: 1rem; }
+  .block-detail .block-detail-content .add-cart-content {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e4d804; }
+    .block-detail .block-detail-content .add-cart-content:hover {
+      cursor: pointer; }
+    .block-detail .block-detail-content .add-cart-content p {
+      margin: 1rem;
+      font-size: 3rem; }
 
 .block-inscription-content .inscription-image {
   text-align: center; }
@@ -274,6 +293,39 @@ a {
     max-width: 100%; }
 .block-profil-content h2 {
   text-align: center; }
+
+.block-cart-content table {
+  width: 100%;
+  background-color: grey; }
+  .block-cart-content table tr {
+    display: flex;
+    justify-content: space-between; }
+  .block-cart-content table thead tr {
+    border-bottom: 1px solid yellow; }
+  .block-cart-content table tbody .quantity {
+    display: flex; }
+    .block-cart-content table tbody .quantity input::-webkit-outer-spin-button,
+    .block-cart-content table tbody .quantity input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    .block-cart-content table tbody .quantity input {
+      -moz-appearance: textfield;
+      width: 5rem;
+      margin-right: .5rem; }
+    .block-cart-content table tbody .quantity span {
+      margin-right: .5rem; }
+.block-cart-content .cart-bottom {
+  display: flex;
+  justify-content: flex-end; }
+.block-cart-content .total-amount-content {
+  padding-right: .3rem; }
+  .block-cart-content .total-amount-content span {
+    margin: 0 1rem; }
+.block-cart-content .validate-cart-content .button {
+  padding: .6rem;
+  margin: 1rem; }
+  .block-cart-content .validate-cart-content .button:first-child:hover {
+    background-color: #0099ff; }
 
 footer {
   margin-top: 2rem;

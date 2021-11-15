@@ -20,10 +20,22 @@
                 <a href="./?path=profile" class="button">profile</a>
                 <a href="./?path=disconnect" class="button off"><i class="fas fa-power-off"></i></a>
             <?php endif; ?>
-            <div class="cart">
-                <i class="fas fa-shopping-cart"></i>
-                <span></span>€
-            </div>
+            <?php if(empty($_COOKIE["panier"])): ?>
+                <a href="./?path=cart" class="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    (<span>0</span>)
+                </a>
+            <?php else: 
+                $quantity = 0;
+                foreach(json_decode($_COOKIE['panier']) as $article):
+                    $quantity ++;
+                endforeach;
+            ?>
+                <a href="./?path=cart" class="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    (<span><?= $quantity ?></span>)
+                </a>
+            <?php endif ?>
         </div>
     </div>
 </header>

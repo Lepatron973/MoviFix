@@ -43,6 +43,10 @@ header{
                 padding: 1rem;
                 border-radius: 4px;
                 margin: 0 1rem;
+                &:hover{
+                    cursor: pointer;
+                    background-color: $primaryColor;
+                }
                 i{
                     margin-right: .3rem;
                 }

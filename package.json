@@ -1,0 +1,20 @@
+{
+  "name": "movifix",
+  "version": "1.0.0",
+  "description": "site permettant de voir les derniers films à la une et de les acheter",
+  "main": "index.js",
+  "scripts": {
+    "style-dev": "sass --watch ./public/scss/style.scss:./public/css/style.css",
+    "style-prod": "sass ./public/scss/style.scss ./public/css/style.min.css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lepatron973/MoviFix.git"
+  },
+  "author": "Lepatron973",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lepatron973/MoviFix/issues"
+  },
+  "homepage": "https://github.com/Lepatron973/MoviFix#readme"
+}

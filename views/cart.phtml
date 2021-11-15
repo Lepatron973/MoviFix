@@ -1,0 +1,53 @@
+<section class="block block-1 header-block">
+    <div class="block-1-content container">
+        <h1>
+           Panier   
+        </h1>
+    </div>
+</section>
+ <!-- start Block 1 section movies  -->
+<section class="block-cart">
+    <div class="block-cart-content  container">
+       <table>
+           <thead>
+               <tr>
+                    <th>Désignation</th>
+                    <th>Prix U</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+               </tr>
+           </thead>
+           <tbody>
+               
+                <?php 
+                    $prices = [];
+                    foreach($data as $article): 
+                    array_push($prices, $article['price'] * $article['quantity']);
+                ?>
+               <tr>
+                   <td class="article-name"><?= $article['title'] ?></td>
+                   <td><span class="unit-amount"><?= $article['price'] ?></span> €</td>
+                   <td class="quantity"><input type="number" value="<?= $article['quantity'] ?>"><span class="remove"><i class="fas fa-minus-circle"></i></span><span class="add"><i class="fas fa-plus-circle"></i></span></td>
+                   <td><span class="total-amount-article"><?= $article['price'] * $article['quantity']   ?></span> € TTC</td>
+               </tr>
+               <?php endforeach; ?>
+           </tbody>
+       </table>
+
+       <?php 
+            $totalAmount = 0;
+            foreach($prices as $price):
+                $totalAmount += $price;
+            endforeach;
+        ?>
+        
+       <div class="total-amount-content cart-bottom">
+           Total de votre panier: <span class="total-amount-cart"><?= $totalAmount ?></span> € TTC
+       </div>
+       <div class="validate-cart-content cart-bottom">
+           <div class="button">Poursuivre mes achats</div>
+           <div class="button">Commander</div>
+       </div>
+    </div>
+</section>
+

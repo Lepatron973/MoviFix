@@ -12,6 +12,7 @@ $liMargin: 1rem;
 @mixin button{
     padding: 2rem;
     border: 1px solid $primaryColor;
+    cursor: pointer;
     border-radius: 50px;
 }
 @mixin buttonHover{

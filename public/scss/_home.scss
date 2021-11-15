@@ -79,7 +79,8 @@
                 .movie-info-bottom{
                     display: flex;
                     justify-content: center;
-                    p{
+                    a{
+                        margin: 2rem 0 0;
                         border: 1px solid $primaryColor;
                         font-size: 2rem;
                         border-radius: 50px;

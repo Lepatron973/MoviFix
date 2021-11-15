@@ -12,6 +12,8 @@
             "status" => false
         );
     }
+    if(!isset($_COOKIE['panier']))
+        setcookie('panier',json_encode(array()),  time() + (3600 * 24));
     if($_GET['path']){
         $page = array (
             "name" => $_GET["path"],
@@ -21,12 +23,11 @@
         switch($_GET['path']){
             
             case "home":
-                
+
                 $controller = new Controllers\MovieController($page);
                 $controller->addStyle("glide.core.min");
                 $controller->addStyle("glide.theme.min");
                 $controller->addScript("glide.min");
-                $controller->addScript("utilities");
                 $controller->addScript("home");
                 $controller->addScript("slider");
                 $controller->display();
@@ -73,6 +74,24 @@
                    $controller->modifyUser();
                 }
                 $controller->display();
+            break;
+            case "addCart":
+                $page["model"] = new Models\Movies();
+                $controller = new Controllers\CartController($page);
+                $controller->addScript($page['name']);
+                $controller->setCart();//permet de mettre à jour le panier
+                $controller->addToCart($_GET['id']);
+                header("location: ./?path=home");
+               
+               
+                
+            break;
+            case "cart":
+                $page["model"] = new Models\Movies();
+                $controller = new Controllers\CartController($page);
+                $controller->addScript($page['name']);
+                $cart = $controller->getCart();
+                $controller->display($cart);
             break;
             case "ajax":
                 $page["model"] = new Models\Movies();

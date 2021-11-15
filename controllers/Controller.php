@@ -14,7 +14,8 @@
             }else{
                 $this->view = "home";
             }
-            $this->scripts = array("main");
+            $this->scripts = array("utilities");
+            $this->addScript("main");
             $this->styles = array("style");
 
          }
@@ -23,15 +24,18 @@
             $datas = !empty($data) ? $data : [];
             require_once VIEW_DIR . "/page.phtml";
         }
-
+        /* 
+            fonction permmettant l'ajout d'un script à la page
+            @param string $script: le nom du script sans l'extension
+        */
         public function addScript(string $script){
             array_push($this->scripts,$script);
         }
+        /* 
+            fonction permmettant l'ajout d'un style à la page
+            @param string $style: le nom du style sans l'extension
+        */
         public function addStyle(string $style){
             array_push($this->styles,$style);
         }
-        /* 
-            récupère les données du flux de la requête POST envoyé par l'Objet Request du javascript
-            retourne la variable $json contenant les données prêtes à utiliser
-         */
     }

@@ -28,7 +28,6 @@ let init = {
       return res.json();
     })
     .then(res => {
-        console.log(res)
         divDetail = document.createElement("div");
         ulGenre = document.createElement("ul");
         ulGenre.classList.add("genre-content");
@@ -60,12 +59,13 @@ let init = {
                     <p>---</p>
                     <p>revenu : ${res.revenue} $</p>
                 </div>
-            
+                <a href="./?path=addCart&id=${res.id}" class="add-cart-content">
+                    <p><i class="fas addCart fa-cart-plus"></i></p>
+                </a>
             </div>
         </div>
         `;
         detailMovieBlock.appendChild(divDetail);
         let divBuget = document.querySelector(".budget-revenu");
         divBuget.after(ulGenre);
-        
     })
