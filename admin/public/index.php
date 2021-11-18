@@ -32,11 +32,6 @@
                 
                 case "home":
                     $controller = new Admin_controllers\AdminHomeController($page);
-                    $controller->addStyle("glide.core.min");
-                    $controller->addStyle("glide.theme.min");
-                    $controller->addScript("glide.min");
-                    $controller->addScript("home");
-                    $controller->addScript("slider");
                     $controller->display();
                 break;
                 case "add-remove-movie":

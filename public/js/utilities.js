@@ -25,13 +25,13 @@ const params = "language=en-US&page=1,init"
 const endpoint = [
   "3/movie/now_playing",
 ]
-const limit = 4;
+const limit = 10;
 API_KEY = "69ba83f78c85f28287d57b3ca8f8c45c";
 const host = {
   "api": "https://api.themoviedb.org",
   "site": "https://www.themoviedb.org"
 }
-let param = "page=1"; 
+let param = "page=2"; 
 const imageSizePath = [
   "/t/p/w220_and_h330_face",
   "/t/p/w440_and_h660_face",

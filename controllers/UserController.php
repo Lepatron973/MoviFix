@@ -7,7 +7,6 @@
             $this->model->addUser();
         }
         function connexion(){
-            var_dump($_POST);
             if($userData = $this->model->connectUser()){
 
                 $_SESSION['user'] = array(

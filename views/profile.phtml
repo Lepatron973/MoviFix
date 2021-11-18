@@ -10,7 +10,7 @@
     <div class="block-profil-content container">
         <div class="profil-image">
             <?php if($_SESSION['user']['image'] != null): ?>
-                <img src="/public/ressources/uploads/<?php $_SESSION['user']['image'] ?>" alt="photo de profile">
+                <img src="ressources/uploads/<?= $_SESSION['user']['image'] ?>" alt="photo de profile">
             <?php else: ?>
                 <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="photo de profile">
             <?php endif; ?>

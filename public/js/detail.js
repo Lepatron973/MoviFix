@@ -2,28 +2,16 @@ let init = {
     method: "GET",
     param: "hello"
   }
-  let params = "language=en-US&page=1,init"
-  let endpoint = "3/movie/now_playing";
-  const apiKey = "69ba83f78c85f28287d57b3ca8f8c45c";
-  const tmdbUrl = "https://www.themoviedb.org";
-  let imagePath = [
-    "/t/p/w220_and_h330_face",
-    "/t/p/w440_and_h660_face",
-    "/t/p/w600_and_h900_bestv2"
-  ]
-  const limit = 5;
-  
-  const detailMovieBlock = document.querySelector(".block-detail");
-  const api_key = "69ba83f78c85f28287d57b3ca8f8c45c";
   //récupération des paramètre de l'url pour obtenir l'id du film
   const urlParam = location.search
   //   formatage permettant d'obtenir l'id du film
   const id = urlParam.substring(urlParam.indexOf('id')+3);
+  const detailMovieBlock = document.querySelector(".block-detail");
 
 
   
 
-  fetch(" https://api.themoviedb.org/3/movie/"+ id +"?api_key="+apiKey+"&language=en-US&page=1")
+  fetch(" https://api.themoviedb.org/3/movie/"+ id +"?api_key="+API_KEY+"&language=en-US&page=1")
     .then(res=>{
       return res.json();
     })
@@ -44,7 +32,7 @@ let init = {
         divDetail.innerHTML = `
         <div class="block-detail-content container">
             <div class="content image-content">
-                <img src="${tmdbUrl}/${imagePath[1]}/${res.poster_path}" alt="">
+                <img src="${host.site}/${imageSizePath[1]}/${res.poster_path}" alt="">
             </div>
             <div class="content text-content">
                 <h2 class="title">${res.title}</h2>
