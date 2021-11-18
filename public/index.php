@@ -30,7 +30,8 @@
                 $controller->addScript("glide.min");
                 $controller->addScript("home");
                 $controller->addScript("slider");
-                $controller->display();
+                $movies = $controller->pullAllMovies();
+                $controller->display($movies);
             break;
             case "detail":
                 $controller = new Controllers\DetailController($page);
@@ -101,6 +102,16 @@
                 
                 $controller = new Controllers\AjaxController( $page['controller']);
                 $controller->router($_GET['action']);
+            break;
+            case "contact":
+                $controller = new Controllers\MovieController($page);
+                $controller->addScript($page['name']);
+                $controller->display();
+            break;
+            case "privacy-policy":
+                $controller = new Controllers\MovieController($page);
+                
+                $controller->display();
             break;
         }
     }else{

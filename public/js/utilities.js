@@ -9,36 +9,9 @@ const options = {
     cette fonction crée une div avec un design prédéfinie par le css
     elle doit être utilisée dans une boucle
 */
-function createMovieDiv(element,tmdbUrl,imageSizePath){
-    let divMovie = document.createElement("div");
-    divMovie.innerHTML = 
-    `
-    <div class="movie">                 
-        <a href="./?path=detail&id=${element.id}">
-            <figure>
-                <img src="${tmdbUrl}/${imageSizePath[0]}${element.poster_path}" class="home-movie-image">
-                <figcaption>
-                    10 €
-                </figcaption>
-            </figure>
-        </a>
-        <div class="movie-info movie-info-top">
-            <p class="movie-title">${element.original_title}</p>
-            <p class="movie-date">${element.release_date}</p>
-        </div>
-        <div class="movie-info movie-info-center">
-            <p>info</p>
-            <div>
-                <span>lorem</span>
-                <span>lorem</span>
-            </div>
-        </div>
-        <div class="movie-info movie-info-bottom">
-            <a href="./?path=addCart&id=${element.id}"><i class="fas addCart fa-cart-plus" index=${element.id}></i></a>
-        </div>
-    </div>
-        `
-    return divMovie;
+
+function createSlide(){
+
 }
 /* 
     fonction qui permet la récupération des films depuis l'api
@@ -47,26 +20,37 @@ function createMovieDiv(element,tmdbUrl,imageSizePath){
     si ils ne sont pas présent dans la DB avec la fonction
     -> addMovieFromApi()
 */
-function getMovieFromApiAndAdd(moviesBlock){
-    const params = "language=en-US&page=1,init"
-    const endpoint = "3/movie/now_playing";
-    const limit = 4;
-    const apiKey = "69ba83f78c85f28287d57b3ca8f8c45c";
-    const tmdbUrl = "https://www.themoviedb.org";
-    const imageSizePath = [
-      "/t/p/w220_and_h330_face",
-      "/t/p/w440_and_h660_face",
-      "/t/p/w600_and_h900_bestv2"
-    ]
-    fetch(" https://api.themoviedb.org/3/movie/now_playing?api_key="+apiKey+"&language=en-US&page=3")
+const params = "language=en-US&page=1,init"
+
+const endpoint = [
+  "3/movie/now_playing",
+]
+const limit = 4;
+API_KEY = "69ba83f78c85f28287d57b3ca8f8c45c";
+const host = {
+  "api": "https://api.themoviedb.org",
+  "site": "https://www.themoviedb.org"
+}
+let param = "page=1"; 
+const imageSizePath = [
+  "/t/p/w220_and_h330_face",
+  "/t/p/w440_and_h660_face",
+  "/t/p/w600_and_h900_bestv2"
+]
+async function getMovieFromApi(host,path,param,limit,parentElement,action = "home_movie"){
+    let language = "language=en-US";
+    
+    req = `${host.api}/${path}?api_key=${API_KEY}&${language}&${param}`;
+    const data = {};
+    const movies = [];
+    const ids = [];
+    fetch(req)
     .then(res=>{
       return res.json();
     })
     .then( res =>{
       let i = 0;
       let index = 0;
-      const ids = [];
-      const movies = [];
       for (const element of res.results) {
         if(i<limit){
          
@@ -82,23 +66,26 @@ function getMovieFromApiAndAdd(moviesBlock){
             id_api_movie: element.id
           }
           movies.push(movie)
-          let divMovie = createMovieDiv(element,tmdbUrl,imageSizePath)
-          
-        
-          moviesBlock.appendChild(divMovie);
+          if(action = "home_movie"){
+            let divMovie = createMovieDiv(element,host.site,imageSizePath)
+            parentElement.appendChild(divMovie); 
+          }
         }
         i++;
-    }
-    const btnAddCart = document.querySelectorAll(".addCart");
-    for(let btn of btnAddCart){
-        
-        // btn.addEventListener("click", addCart)
-    }
-      // console.log(movies)
-      options.body = JSON.stringify( ids);
-
-      const req = new Request(startPath+"checkIfExist", options)
-      addMovieFromApi(req,movies,options);
+      }
+      if(action = "home_movie"){        
+        const btnAddCart = document.querySelectorAll(".addCart");
+        document.querySelector(".banner img").setAttribute("src",host.site+imageSizePath[1]+ "/" + movies[3].image)
+        for(let btn of btnAddCart){
+            
+            // btn.addEventListener("click", addCart)
+        }
+          // console.log(movies)
+          options.body = JSON.stringify( ids);
+    
+          const req = new Request(startPath+"checkIfExist", options)
+          addMovieFromApi(req,movies,options);
+      }
     })
 }
 
@@ -146,7 +133,8 @@ function addMovieFromApi(req,movies,options){
       }
     })
   }
-
+  
+  
 //   function addCart(){
 //     const id = this.getAttribute('index');
 //     options.body = JSON.stringify(id)

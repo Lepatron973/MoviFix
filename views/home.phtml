@@ -2,10 +2,10 @@
  <section class="block block-1">
     <div class="block-1-content container">
         <h1>
-            Des films à volonté en un click
+            Movies at will
         </h1>
         <div>
-            <a href="http://" class="button"> regarder maintenant</a>
+            <a href="http://" class="button"> watch now</a>
         </div>
     </div>
 </section>
@@ -16,7 +16,7 @@
     <div class="block-2-content container">
         <div class="header-block-2">
             <h2>
-               À la une
+                in the spotlight
             </h2>
             <ul>
                 <li><a href="" class="button"> categorie 1</a></li>
@@ -55,13 +55,13 @@
  <!-- end Block 2 section movies  -->
  <section class="block block-3">
      <div class="block-3-content slide container">
-        <h2>Vous aimeriez aussi</h2>
+        <h2>You would also like</h2>
         <div class="glide">
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                    <li class="glide__slide"><img src="https://fakeimg.pl/300x300/" alt=""></li>
-                    <li class="glide__slide"><img src="https://fakeimg.pl/300x300/" alt=""></li>
-                    <li class="glide__slide"><img src="https://fakeimg.pl/300x300/" alt=""></li>
+                    <?php for($i =6; $i < 10;$i++): ?>
+                        <li class="glide__slide slide"><img src="https://www.themoviedb.org/t/p/w220_and_h330_face/<?= $data[$i]['image'] ?>" alt=""></li>
+                    <?php endfor; ?>
                 </ul>
             </div>
             <div class="glide__arrows" data-glide-el="controls">
@@ -69,9 +69,11 @@
                 <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-                <button class="glide__bullet" data-glide-dir="=0"></button>
-                <button class="glide__bullet" data-glide-dir="=1"></button>
-                <button class="glide__bullet" data-glide-dir="=2"></button>
+                <?php 
+                    $index = 0;
+                      for($i =6; $i < 10;$i++): ?>
+                        <button class="glide__bullet" data-glide-dir="<?= $index; ?>"></button>
+                <?php $index++; endfor; ?>
             </div>
         </div>          
     </div>

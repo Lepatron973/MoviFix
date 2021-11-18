@@ -2,6 +2,11 @@
     namespace Models;
 
     class Movies extends Database{
+        function getAllMovies(){
+            $table = "movies";
+            $datas = $this->getAllByTable($table);
+            return $datas;
+        }
         public function getMoviesId(){
             $ref = "id_api_movie";
             $table = "movies";

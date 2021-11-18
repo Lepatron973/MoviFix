@@ -16,6 +16,7 @@
             }
             $this->scripts = array("utilities");
             $this->addScript("main");
+            $this->addScript("templates");
             $this->styles = array("style");
 
          }
