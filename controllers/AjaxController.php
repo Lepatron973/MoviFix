@@ -2,7 +2,7 @@
     namespace Controllers;
 
     class AjaxController {
-        function __construct($controller){
+        function __construct(object $controller){
             
             $this->controller = $controller;
         }
@@ -10,7 +10,7 @@
             Cette fonction permet de servir les différentes routes
             utilisant les requêtes ajax et ainsi d'alléger l'index
         */
-        public function router(string $action){
+        public function router(string $action):void{
             $json = $this->parseJsonData();
             
             switch($action){
@@ -44,7 +44,7 @@
                  break; 
             }
         }
-        public function parseJsonData(){
+        public function parseJsonData():string{
             $json = file_get_contents("php://input");
             $json = json_decode($json, true);
             return $json;

@@ -19,24 +19,27 @@
             $this->addScript("templates");
             $this->styles = array("style");
 
-         }
-        public function display($data = []){
+        }
+        public function display(array $data = []):bool{
             $view = 'home';
+            if(!is_array($data))
+                return false;
             $datas = !empty($data) ? $data : [];
             require_once VIEW_DIR . "/page.phtml";
+            return true;
         }
         /* 
             fonction permmettant l'ajout d'un script à la page
             @param string $script: le nom du script sans l'extension
         */
-        public function addScript(string $script){
+        public function addScript(string $script):void{
             array_push($this->scripts,$script);
         }
         /* 
             fonction permmettant l'ajout d'un style à la page
             @param string $style: le nom du style sans l'extension
         */
-        public function addStyle(string $style){
+        public function addStyle(string $style):void{
             array_push($this->styles,$style);
         }
     }

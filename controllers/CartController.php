@@ -3,29 +3,30 @@
 
     class CartController extends MovieController{
         private $cart;
-        function __construct($page){
+        function __construct(string $page){
             parent:: __construct($page);
             $this->cart = array();
             $this->expireDate = time() + (3600 * 24);
         }
-        public function setCart(){
+        public function setCart():void{
             $cart = json_decode($_COOKIE['panier']);
             $this->cart = $cart;
 
         }
-        public function addToCart($data){
-            array_push($this->cart,$data);
-            setcookie("panier",json_encode($this->cart),$this->expireDate);
+        public function addToCart(string $id):void{
+            array_push($this->cart,$id);
+            setcookie("panier",json_encode($this->cart),$this->expireDate,"/");
         }
         public function getcookie($cookieName){
-
+            
             return $cookie = isset($_COOKIE[$cookieName]) ? $_COOKIE[$cookieName] : false;
         }
-        public function getCart(){
+        public function getCart():array{
             $this->setCart();
             $cart = [];
             $newCart = [];
             $idRef = [];
+            // var_dump($this->cart);
 
             foreach($this->cart as $id){
                 
@@ -47,7 +48,7 @@
             }   
             return $cart;
         }
-        public function array_icount_values($arr, $lower=true) {
+        public function array_icount_values(array $arr, bool $lower=true):array {
             $arr2 = array();
     
             if(count($arr)!=0){

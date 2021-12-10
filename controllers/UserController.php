@@ -3,10 +3,10 @@
 
     class UserController extends Controller{
 
-        function registration(){
+        function registration():void{
             $this->model->addUser();
         }
-        function connexion(){
+        function connexion():void{
             if($userData = $this->model->connectUser()){
 
                 $_SESSION['user'] = array(
@@ -19,7 +19,7 @@
                 );
             }
         }
-        function modifyUser(){
+        function modifyUser():void{
             if($this->model->updateUser()){
                 echo "passé";
                 $_SESSION['user']['firstname'] = $_POST['firstname'];
@@ -29,7 +29,7 @@
                     $_SESSION['user']['image'] = $_POST['image'];
             }
             else
-            echo "pas passé";
+                echo "pas passé";
             
         }
 

@@ -7,12 +7,12 @@
             $datas = $this->getAllByTable($table);
             return $datas;
         }
-        public function getMoviesId(){
+        public function getMoviesId():array{
             $ref = "id_api_movie";
             $table = "movies";
             return $this->getSpeceficData($ref,$table);
         }
-        function getOneMovie($id){
+        function getOneMovie($id):array{
             $table = "movies";
             $movieToGet = array(
                 "table" =>  "movies",
@@ -22,8 +22,8 @@
             $datas = $this->getOneByRef($movieToGet);
             return $datas;
         }
-        public function addMovie(array $data){
+        public function addMovie(array $data):void{
             $data['table'] = "movies";
-            return $this->insert($data);
+            $this->insert($data);
         }
     }

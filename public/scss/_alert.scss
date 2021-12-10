@@ -1,0 +1,13 @@
+.alert{
+    padding: 1rem;
+    background-color: rgb(201, 98, 98);
+    .simple-alert{
+        display: flex;
+        justify-content: space-between;
+        button{
+            @include button;
+            padding: 1rem;
+            background-color: $primaryColor;
+        }
+    }
+}

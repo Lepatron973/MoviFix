@@ -15,7 +15,7 @@
         <div class="manage-movie">
             <div class="block-form-content container">
                 <h3> Nouveau </h3>
-                <form method="POST" action="./?path=add-remove-movie&addMovie=1" enctype="multipart/form-data">
+                <form method="POST" action="/admin/manage/add/1" enctype="multipart/form-data">
                     <div class="input-block">
                         <label for="title"> Titre </label>
                         <input type="text" name="title" >
@@ -60,7 +60,7 @@
                         <option value="<?= $movie['id'] ?>"><?= $movie['title'] ?></option>
                     <?php endforeach; ?>
                 </select>
-                <form method="POST" action="./?path=add-remove-movie&updateMovie=1" enctype="multipart/form-data" >
+                <form method="POST" action="/admin/manage/update/1" enctype="multipart/form-data" >
                     <input type="hidden" name="id">
                     <div class="input-block">
                         <label for="title"> Titre </label>

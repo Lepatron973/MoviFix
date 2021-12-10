@@ -1,1 +1,7 @@
 /public/ressources/uploads/
+/vendor
+/tests
+/logs
+.env
+composer.json
+composer.lock

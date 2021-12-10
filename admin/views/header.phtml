@@ -1,29 +1,29 @@
 <header>
     <div class="header-content container">
         <div class="logo nav-p1">
-            <a href="/MoviFix/admin/public/">
+            <a href="/admin/home">
                 <img src="https://movifix.mx/img/movifix-logo-color@2x.png" alt="logo du site">
             </a>
         </div>
         <nav class="nav-p2">
             <ul>
-                <li><a href="./?path=home">Home</a></li>
-                <li><a href="./?path=add-remove-movie">Manage movie</a></li>
-                <li><a href="./?path=contact">Contact</a></li>
+                <li><a href="/admin/home">Home</a></li>
+                <li><a href="/admin/manage">Manage movie</a></li>
+                <!-- <li><a href="/admin/contact">Contact</a></li> -->
             </ul>
         </nav>
         <div class="nav-p3">
             <?php if(!$_SESSION['user']['status']): ?>
-                <a href="./?path=inscription" class="button">SignUp</a>
-                <a href="./?path=connexion" class="button">SignIn</a>
+                <a href="/admin/inscription" class="button">SignUp</a>
+                <a href="/admin/connexion" class="button">SignIn</a>
             <?php else: ?>
-                <a href="./?path=profile" class="button">profile</a>
-                <a href="./?path=disconnect" class="button off"><i class="fas fa-power-off"></i></a>
+                <a href="/admin/profile" class="button">profile</a>
+                <a href="/admin/disconnect" class="button off"><i class="fas fa-power-off"></i></a>
             <?php endif; ?>
-            <div class="cart">
+            <!-- <div class="cart">
                 <i class="fas fa-shopping-cart"></i>
                 <span>10.00€</span>
-            </div>
+            </div> -->
         </div>
     </div>
 </header>

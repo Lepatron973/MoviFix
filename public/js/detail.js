@@ -3,15 +3,15 @@ let init = {
     param: "hello"
   }
   //récupération des paramètre de l'url pour obtenir l'id du film
-  const urlParam = location.search
+  const urlParam = location.pathname.split("/")
   //   formatage permettant d'obtenir l'id du film
-  const id = urlParam.substring(urlParam.indexOf('id')+3);
+  const id = urlParam[2];
   const detailMovieBlock = document.querySelector(".block-detail");
 
 
-  
+ 
 
-  fetch(" https://api.themoviedb.org/3/movie/"+ id +"?api_key="+API_KEY+"&language=en-US&page=1")
+    fetch(" https://api.themoviedb.org/3/movie/"+ id +"?api_key="+API_KEY+"&language=en-US&page=1")
     .then(res=>{
       return res.json();
     })
@@ -47,7 +47,7 @@ let init = {
                     <p>---</p>
                     <p>revenu : ${res.revenue} $</p>
                 </div>
-                <a href="./?path=addCart&id=${res.id}" class="add-cart-content">
+                <a href="/addCart/${res.id}" class="add-cart-content">
                     <p><i class="fas addCart fa-cart-plus"></i></p>
                 </a>
             </div>

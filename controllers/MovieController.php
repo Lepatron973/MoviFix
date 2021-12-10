@@ -2,7 +2,7 @@
     namespace Controllers;
 
     class MovieController extends Controller{
-        function addMovies(array $movies){
+        function addMovies(array $movies):void{
             $this->insert($movies);
         }
         function pullAllMovies(){
@@ -10,23 +10,23 @@
             $datas = $this->model->getAllMovies($table);
             return $datas;
         }
-        function pullOneMovie($id){
+        function pullOneMovie(string $id):array{
             $table = "movies";
             $datas = $this->model->getOneMovie($id);
             return $datas;
         }
-        function pullMoviesId(){
+        function pullMoviesId():array{
            
             return $this->model->getMoviesId();
         }
-        function modifyMovie(){
+        function modifyMovie():void{
            
             $datas = $this->model->updateMovie();
     
         }
-        function newMovie($movie = []){
+        function newMovie(array $movie = []):void{
             $data = $movie;
-            return $this->model->addMovie($data);
+            $this->model->addMovie($data);
         }
     }
     

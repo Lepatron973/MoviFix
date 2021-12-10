@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "style-dev": "sass --watch ./public/scss/style.scss:./public/css/style.css",
-    "style-prod": "sass ./public/scss/style.scss ./public/css/style.min.css --style compressed"
+    "style-prod": "sass ./public/scss/style.scss ./public/css/style.min.css --style compressed",
+    "test": "./vendor/bin/phpunit"
   },
   "repository": {
     "type": "git",

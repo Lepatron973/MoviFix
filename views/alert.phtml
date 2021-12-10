@@ -1,0 +1,13 @@
+<div class="alert">
+    <div class="simple-alert">
+        <p class="alert-message"><?= $data ?></p> <button class="dismiss-alert">Aceepter</button>
+    </div>
+    <?php if(getenv("mod") == "debug"): ?>
+        <p> L'erreur a été rencontrée dans le fichier : <?= $errors->getFile() ?> || Message: <?= $errors->getMessage() ?> || Ligne: <?= $errors->getLine() ?></p>
+        <div class="description">
+            <?php foreach($errors->getTrace() as $error): ?>
+                <p> Fichier Concerné: <?= $error["file"] ?> || Fonction liée: <?= $error["function"] ?> || Ligne: <?= $error["line"] ?></p>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+</div>

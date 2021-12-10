@@ -1,0 +1,4 @@
+RewriteEngine ON
+
+#page -1 argument
+RewriteRule ^([a-zA-Z]+)/?([a-zA-Z0-9]+)?/?([a-zA-Z0-9]+)?$ index.php?path=$1&param2=$2&param3=$3

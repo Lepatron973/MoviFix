@@ -14,7 +14,7 @@ function createMovieDiv(element,host,imageSizePath){
     domElement.innerHTML = 
     `
     <div class="movie">                 
-        <a href="./?path=detail&id=${element.id}">
+        <a href="/detail/${element.id}">
             <figure>
                 <img src="${host}/${imageSizePath[0]}${element.poster_path}" class="home-movie-image">
                 <figcaption>

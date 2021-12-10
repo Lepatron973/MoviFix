@@ -3,10 +3,16 @@
 
     class Database{
         function __construct(){
-            $this->bdd = new \PDO("mysql:dbname=" .BDD_CONNECT['dbname']. "host=" . BDD_CONNECT['host'], BDD_CONNECT['user'], BDD_CONNECT['password']);
+            try {
+                //code...
+                $this->bdd = new \PDO("mysql:dbname=" .BDD_CONNECT['dbname']. "host=" . BDD_CONNECT['host'], BDD_CONNECT['user'], BDD_CONNECT['password']);
+            } catch (\PDOException $e) {
+                \Controllers\ErrorController::connexionFailed($e);
+            }
+            
         }
 
-        function insert(array $post){
+        function insert(array $post):bool{
             $ref = [];
             $sql = "INSERT INTO `$post[table]` (" ;
             $i = 1;
@@ -43,7 +49,7 @@
             }
             print_r("<br>");
             var_dump($req);
-            var_dump($req->execute());
+            return $req->execute();
         }
         /*
             array @data avec pour valeur :
@@ -51,33 +57,25 @@
             "table" => la table dans laquelle on va chercher,
             "value" => l'élément de comparaison  
          */
-        function getOneByRef(array $data){
+        function getOneByRef(array $data):array{
             $req = $this->bdd->prepare("SELECT * FROM $data[table] WHERE  $data[ref] = ?");
-         
-        
             $req->execute(["$data[value]"]);
             return $result = $req->fetch(\PDO::FETCH_ASSOC);
         }
 
-        function getAllByTable(string $table){
+        function getAllByTable(string $table):array{
             $req = $this->bdd->prepare("SELECT * FROM $table");
-         
-        
             $req->execute();
             return $result = $req->fetchAll(\PDO::FETCH_ASSOC);
         }
-        function getSpeceficData($refToPull,$table){
-
+        function getSpeceficData(string $refToPull,string $table):array{
             $req = $this->bdd->prepare("SELECT $refToPull FROM $table");
-         
-        
             $req->execute();
             return $result = $req->fetchAll(\PDO::FETCH_ASSOC);
         }
-        function update($post){
+        function update(array $post):bool{
             $ref = [];
             $sql = "UPDATE `$post[table]` SET " ;
-            var_dump($post);
             $i = 1;
             foreach($post as $key => $value){
                 if($key != "confirm-password" && $key != "table"){
@@ -87,11 +85,9 @@
             }
             foreach($ref as $key){
                 $sql .= "`". $key . "` = ?,";
-            }
-            
+            }  
             $sql = substr_replace($sql," WHERE id = $post[id]", strlen($sql)-1);
             $req = $this->bdd->prepare($sql);
-
             foreach($ref as $value){
                 switch($post[$value]){
                     
@@ -108,8 +104,7 @@
                 }
                 $i++;
             }
-            print_r("<br>");
-           
+            print_r("<br>");    
             return $req->execute();
         }
     }

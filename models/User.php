@@ -2,7 +2,7 @@
     namespace Models;
 
     class User extends Database{
-        function addUser(){
+        function addUser():void{
             $_POST["table"] = "users";
                          
             $userToCheck = array(
@@ -27,12 +27,12 @@
             
         }
 
-        function verifUserExist($data){
+        function verifUserExist(array $data):array{
             return $this->getOneByRef($data);
         }
 
 
-        function checkImage(){
+        function checkImage():bool{
             // Si tu le modifie il faudra aussi le faire sur l'input file (attribut accept)
             $acceptedFormat = array(
                 "jpg","jpeg",'png',"svg"
@@ -56,7 +56,7 @@
             return $goOn;
         }
 
-        function connectUser(){
+        function connectUser(): mixed{
             $userToCheck = array(
                 "table" =>  "users",
                 "ref" => "email",
@@ -71,10 +71,10 @@
             }
             else
                 echo "identifiant incorrect";
-            return $connected = $check ? $userData : false;;
+            return $connected = $check ? $userData : false;
         }
 
-        function updateUser(){
+        function updateUser():void{
             $_POST["table"] = "users";
             $_POST["id"] = $_SESSION['user']['id'];             
             $uploadDir = ROOT_DIR."/public/ressources/uploads/";
@@ -93,7 +93,7 @@
                 $messageImageDownload = move_uploaded_file($_FILES['image']['tmp_name'],$uploadFile) ? "Image téléchargée !" : "L'image n'a pas pu être téléchargée";
                 echo $messageImageDownload;
   
-                return $this->update($_POST);
+                $this->update($_POST);
                 
             }
         }

@@ -1,27 +1,27 @@
 <header>
     <div class="header-content container">
         <div class="logo nav-p1">
-            <a href="./?path=home">
+            <a href="/home">
                 <img src="https://movifix.mx/img/movifix-logo-color@2x.png" alt="logo du site">
             </a>
         </div>
         <nav class="nav-p2">
             <ul>
-                <li><a href="./?path=home">Home</a></li>
-                <!-- <li><a href="./?path=movies">Movie</a></li> -->
-                <li><a href="./?path=contact">Contact</a></li>
+                <li><a href="/home">Home</a></li>
+                <!-- <li><a href="/movies">Movie</a></li> -->
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-p3">
             <?php if(!$_SESSION['user']['status']): ?>
-                <a href="./?path=inscription" class="button">SignUp</a>
-                <a href="./?path=connexion" class="button">SignIn</a>
+                <a href="/inscription" class="button">SignUp</a>
+                <a href="/connexion" class="button">SignIn</a>
             <?php else: ?>
-                <a href="./?path=profile" class="button">profile</a>
-                <a href="./?path=disconnect" class="button off"><i class="fas fa-power-off"></i></a>
+                <a href="/profile" class="button">profile</a>
+                <a href="/disconnect" class="button off"><i class="fas fa-power-off"></i></a>
             <?php endif; ?>
             <?php if(empty($_COOKIE["panier"])): ?>
-                <a href="./?path=cart" class="cart">
+                <a href="/cart" class="cart">
                     <i class="fas fa-shopping-cart"></i>
                     (<span>0</span>)
                 </a>
@@ -31,11 +31,19 @@
                     $quantity ++;
                 endforeach;
             ?>
-                <a href="./?path=cart" class="cart">
+                <a href="/cart" class="cart">
                     <i class="fas fa-shopping-cart"></i>
                     (<span><?= $quantity ?></span>)
                 </a>
             <?php endif ?>
         </div>
     </div>
+    <?php 
+    // AFFICHAGE DE L'ALERTE EN CAS DE PROBLEME SUR LE SITE
+        if(isset($GLOBALS["errors"])): 
+            $data = $GLOBALS["message"];
+            $errors = $GLOBALS["errors"];
+            require_once VIEW_DIR . "/alert.phtml";
+        endif;
+    ?> 
 </header>
