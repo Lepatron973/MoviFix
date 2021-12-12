@@ -2,7 +2,7 @@
     namespace Models;
 
     class Movies extends Database{
-        function getAllMovies(){
+        function getAllMovies():array{
             $table = "movies";
             $datas = $this->getAllByTable($table);
             return $datas;
@@ -12,7 +12,7 @@
             $table = "movies";
             return $this->getSpeceficData($ref,$table);
         }
-        function getOneMovie($id):array{
+        function getOneMovie(string $id):array{
             $table = "movies";
             $movieToGet = array(
                 "table" =>  "movies",
@@ -22,8 +22,8 @@
             $datas = $this->getOneByRef($movieToGet);
             return $datas;
         }
-        public function addMovie(array $data):void{
+        public function addMovie(array $data):bool{
             $data['table'] = "movies";
-            $this->insert($data);
+            return $this->insert($data);
         }
     }

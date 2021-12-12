@@ -2,16 +2,16 @@
     "version": "0.1.0",
     "configurations": [
         {
-            "type": "devtools-for-chrome",
+            "type": "php-debug",
             "request": "launch",
             "name": "Launch Chrome DevTools",
             "file": "${workspaceFolder}/index.php"
         },
-        {
-            "type": "devtools-for-chrome",
-            "request": "attach",
-            "name": "Attach Chrome DevTools",
-            "url": "http://localhost/"
-        }
+        // {
+        //     "type": "devtools-for-chrome",
+        //     "request": "attach",
+        //     "name": "Attach Chrome DevTools",
+        //     "url": "http://localhost/"
+        // }
     ]
   }

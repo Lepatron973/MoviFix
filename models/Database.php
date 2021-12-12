@@ -4,7 +4,6 @@
     class Database{
         function __construct(){
             try {
-                //code...
                 $this->bdd = new \PDO("mysql:dbname=" .BDD_CONNECT['dbname']. "host=" . BDD_CONNECT['host'], BDD_CONNECT['user'], BDD_CONNECT['password']);
             } catch (\PDOException $e) {
                 \Controllers\ErrorController::connexionFailed($e);
@@ -13,6 +12,8 @@
         }
 
         function insert(array $post):bool{
+            if(empty($post))
+                return false;
             $ref = [];
             $sql = "INSERT INTO `$post[table]` (" ;
             $i = 1;
@@ -58,6 +59,8 @@
             "value" => l'élément de comparaison  
          */
         function getOneByRef(array $data):array{
+            if(intval($data["value"]) === 0)
+                return $error = [false];
             $req = $this->bdd->prepare("SELECT * FROM $data[table] WHERE  $data[ref] = ?");
             $req->execute(["$data[value]"]);
             return $result = $req->fetch(\PDO::FETCH_ASSOC);

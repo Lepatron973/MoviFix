@@ -1,6 +1,9 @@
 .alert {
   padding: 1rem;
   background-color: #c96262; }
+  .alert .title {
+    text-align: center;
+    font-size: 1.6rem; }
   .alert .simple-alert {
     display: flex;
     justify-content: space-between; }
@@ -11,6 +14,11 @@
       border-radius: 50px;
       padding: 1rem;
       background-color: #e4d804; }
+  .alert .main-error span {
+    background-color: #819b58; }
+
+.warning {
+  background-color: #d49356; }
 
 .block-form-content h2 {
   text-align: center; }

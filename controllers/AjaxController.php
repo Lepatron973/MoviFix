@@ -44,7 +44,7 @@
                  break; 
             }
         }
-        public function parseJsonData():string{
+        public function parseJsonData():array{
             $json = file_get_contents("php://input");
             $json = json_decode($json, true);
             return $json;

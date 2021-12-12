@@ -3,7 +3,7 @@
 
     class CartController extends MovieController{
         private $cart;
-        function __construct(string $page){
+        function __construct(array $page){
             parent:: __construct($page);
             $this->cart = array();
             $this->expireDate = time() + (3600 * 24);

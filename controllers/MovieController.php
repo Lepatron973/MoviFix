@@ -5,7 +5,7 @@
         function addMovies(array $movies):void{
             $this->insert($movies);
         }
-        function pullAllMovies(){
+        function pullAllMovies():array{
             $table = "movies";
             $datas = $this->model->getAllMovies($table);
             return $datas;

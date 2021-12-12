@@ -6,7 +6,7 @@
     define("VIEW_ADMIN_DIR",ROOT_DIR."/admin/views");
     define("SRC_PUBLIC",getcwd());
     define("BDD_CONNECT", array(
-        "dbname"=>"movifix;",
+        "dbname"=>"moviix;",
         "host"=>"localhost",
         "user"=>"movifix",
         "password"=>"movifix"

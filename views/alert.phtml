@@ -1,13 +1,26 @@
+<?php if(isset($exceptionsMessages)): ?>
 <div class="alert">
+    <p class="title">Erreur Fatal</p>
     <div class="simple-alert">
-        <p class="alert-message"><?= $data ?></p> <button class="dismiss-alert">Aceepter</button>
+        <p class="alert-message"><?= $exceptionsMessages[0] ?></p> <button class="dismiss-alert">Aceepter</button>
     </div>
-    <?php if(getenv("mod") == "debug"): ?>
-        <p> L'erreur a été rencontrée dans le fichier : <?= $errors->getFile() ?> || Message: <?= $errors->getMessage() ?> || Ligne: <?= $errors->getLine() ?></p>
-        <div class="description">
-            <?php foreach($errors->getTrace() as $error): ?>
-                <p> Fichier Concerné: <?= $error["file"] ?> || Fonction liée: <?= $error["function"] ?> || Ligne: <?= $error["line"] ?></p>
-            <?php endforeach; ?>
-        </div>
-        <?php endif; ?>
+    <?php if(getenv("mod") == "debug"): ?> 
+        <?php foreach($exceptionsBlock as $exceptions): ?>
+            <p> <span> L'erreur a été rencontrée dans le fichier :</span> <?= $exceptions["file"] ?> || Message: <?= $exceptions["message"] ?> || Ligne: <?= $exceptions["line"] ?></p>
+            <div class="description">
+                <?php foreach($exceptions["traces"] as $exception): ?>
+                    <p> Fichier Concerné: <?= $exception["file"] ?> || Fonction liée: <?= $exception["function"] ?> || Ligne: <?= $exception["line"] ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif;?>
 </div>
+<?php endif;?>
+<?php if(isset($errors)): ?>
+<div class="alert warning">
+    <p class="title">Avertissement</p>
+    <?php $index2 = 0; foreach($errors as $error): ?>
+        <p> Fichier concerné : <?= $error["file"] ?> || Message: <?= $error["message"] ?> || Ligne: <?= $error["line"] ?></p>
+    <?php endforeach; ?>
+</div>
+<?php endif;?>

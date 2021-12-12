@@ -12,8 +12,6 @@ var glide = new Glide('.glide', {
 //       perView: 1
 //     }
 //   }
-})
-
-       console.log(movieToDisplay)        
+})       
 
 glide.mount()

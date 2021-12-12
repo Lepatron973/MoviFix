@@ -47,7 +47,7 @@ let init = {
                     <p>---</p>
                     <p>revenu : ${res.revenue} $</p>
                 </div>
-                <a href="/addCart/${res.id}" class="add-cart-content">
+                <a href="/?path=addCart&id=${res.id}" class="add-cart-content">
                     <p><i class="fas addCart fa-cart-plus"></i></p>
                 </a>
             </div>

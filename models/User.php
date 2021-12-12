@@ -56,7 +56,7 @@
             return $goOn;
         }
 
-        function connectUser(): mixed{
+        function connectUser(){
             $userToCheck = array(
                 "table" =>  "users",
                 "ref" => "email",

@@ -22,8 +22,6 @@
         }
         public function display(array $data = []):bool{
             $view = 'home';
-            if(!is_array($data))
-                return false;
             $datas = !empty($data) ? $data : [];
             require_once VIEW_DIR . "/page.phtml";
             return true;

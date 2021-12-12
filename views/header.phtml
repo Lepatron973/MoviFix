@@ -40,10 +40,15 @@
     </div>
     <?php 
     // AFFICHAGE DE L'ALERTE EN CAS DE PROBLEME SUR LE SITE
-        if(isset($GLOBALS["errors"])): 
-            $data = $GLOBALS["message"];
-            $errors = $GLOBALS["errors"];
-            require_once VIEW_DIR . "/alert.phtml";
+        if(count($GLOBALS["exceptions"]) > 0):
+            $exceptionsMessages = $GLOBALS["exceptions_message"];
+            $exceptionsBlock = $GLOBALS["exceptions"];
         endif;
+        if(count($GLOBALS["errors"]) > 0 && getenv("mod") == "debug"): 
+
+            $errorsMessages = $GLOBALS["errors_message"];
+            $errors = $GLOBALS["errors"];
+        endif;
+        require_once VIEW_DIR . "/alert.phtml";
     ?> 
 </header>
