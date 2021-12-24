@@ -42,7 +42,7 @@
             display: flex;
             flex-wrap: wrap;
             .movie{
-                flex-basis: 15%;
+               
                 margin: 1rem;
                 figure{
                     
@@ -70,11 +70,12 @@
                     }
                 }
                 .movie-info{
-                    display: flex;
+                    
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
                 }
+               
                 .movie-info-bottom{
                     display: flex;
                     justify-content: center;
@@ -106,9 +107,44 @@
 }
 .block-4{
     .block-4-content{
-        display: flex;
+       
         div{
             flex-basis: 50%;
         }
+    }
+}
+@media screen and (max-width: 620px){
+    
+    .block-2-content{
+       
+       .button{
+          padding: .5rem;
+          margin: .5rem;
+       }
+       .movie-info-top, .movie-info-center{
+           display: none;
+       }
+       .movie{
+           flex-basis: 40%;
+       }
+    }
+}
+
+@media screen and (min-width: 620px){
+    .movie{
+        flex-basis: 22%;
+    }
+    .block-4-content{
+        
+        .banner-image{
+            float: left;
+            margin: 1rem;
+            max-width: 45%;
+        }
+    }
+}
+@media screen and (min-width: 800px){
+    .movie{
+        flex-basis: 15%;
     }
 }

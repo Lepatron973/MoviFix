@@ -38,6 +38,46 @@
             <?php endif ?>
         </div>
     </div>
+    <div class="navbar">
+        <div class="logo nav-p1">
+            <a href="/home">
+                <img src="https://movifix.mx/img/movifix-logo-color@2x.png" alt="logo du site">
+            </a>
+        </div>
+        <div class="nav-p2">
+
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fas fa-bars"></i>
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                <?php if(!$_SESSION['user']['status']): ?>
+                    <a href="/inscription" class="button">SignUp</a>
+                    <a href="/connexion" class="button">SignIn</a>
+                <?php else: ?>
+                    <a href="/profile" class="button">profile</a>
+                    <a href="/disconnect" class="button off"><i class="fas fa-power-off"></i></a>
+                <?php endif; ?>
+                </div>
+            </div>
+            <?php if(empty($_COOKIE["panier"])): ?>
+                    <a href="/cart" class="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        (<span>0</span>)
+                    </a>
+                <?php else: 
+                    $quantity = 0;
+                    foreach(json_decode($_COOKIE['panier']) as $article):
+                        $quantity ++;
+                    endforeach;
+                ?>
+                <a href="/cart" class="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    (<span><?= $quantity ?></span>)
+                </a>
+                <?php endif ?>
+        </div>
+    </div> 
     <?php 
     // AFFICHAGE DE L'ALERTE EN CAS DE PROBLEME SUR LE SITE
         if(count($GLOBALS["exceptions"]) > 0):

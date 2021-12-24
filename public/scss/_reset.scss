@@ -12,4 +12,41 @@ body{
     margin: 0;
     background-color: #171d22;
     color: $secondaryColor;
+    a{
+        text-decoration: none;
+    }
+    h1{
+        font-size: 5rem;
+    }
+    h2{
+        font-size: 4rem;
+    }
+    h3{
+        font-size: 3rem;
+    }
+    h4{
+        font-size: 2rem;
+    }
+    h5{
+        font-size: 1.5rem;
+    }
+    @media screen and (max-width: 620px) {
+        font-size: 1.1rem;
+        h1{
+            font-size: 3rem;
+        }
+        h2{
+            font-size: 2.5rem;
+        }
+        h3{
+            font-size: 2rem;
+        }
+        h4{
+            font-size: 1.5rem;
+        }
+        h5{
+            font-size: 1.2rem;
+        }
+        
+    }
 }

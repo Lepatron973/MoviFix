@@ -18,12 +18,12 @@ const Banner1 = () => {
         })
     
     },[])
-    
+
     return (
         <>
             {movies.map(movie=>(       
-                <div className="glide__slide slide" key="1">
-                    <img src={`https://www.themoviedb.org/${imageSizePath[1]}/${movie.image}`} alt={movie.title} />
+                <div className="banner-image" key="1">
+                    <img src={`https://www.themoviedb.org/${imageSizePath[0]}/${movie.image}`} alt={movie.title} />
                 </div>      
             ))}
             <div>
