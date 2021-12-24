@@ -1,5 +1,6 @@
 <?php
     namespace Controllers;
+    use \Controllers\NotificationController;
 
     class UserController extends Controller{
 
@@ -7,7 +8,8 @@
             $this->model->addUser();
         }
         function connexion():void{
-            if($userData = $this->model->connectUser()){
+            $userData = $this->model->connectUser();
+            if(!empty($userData)){
 
                 $_SESSION['user'] = array(
                     "id" => $userData['id'],
@@ -21,7 +23,7 @@
         }
         function modifyUser():void{
             if($this->model->updateUser()){
-                echo "passé";
+                NotificationController::notification(1,"Mise à jour éffectuée");
                 $_SESSION['user']['firstname'] = $_POST['firstname'];
                 $_SESSION['user']['lastname'] = $_POST['lastname'];
                 $_SESSION['user']['email'] = $_POST['email'];
@@ -29,7 +31,7 @@
                     $_SESSION['user']['image'] = $_POST['image'];
             }
             else
-                echo "pas passé";
+               NotificationController::notification(0,"La mise à jour a échoué");
             
         }
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+
     <?php foreach($this->styles as $style): ?>
         <link rel="stylesheet" href="/public/css/<?= $style ?>.css">
     <?php endforeach; ?>
@@ -21,7 +22,7 @@
     <?php include VIEW_DIR."/footer.phtml"; ?>
     <!-- End Footer -->
     <?php foreach($this->scripts as $script): ?>
-        <script src="/public/js/<?= $script ?>.js"></script>
+        <script type="module" src="/public/js/<?= $script ?>.js"></script>
     <?php endforeach; ?>
 
 </body>

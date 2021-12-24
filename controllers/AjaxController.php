@@ -12,7 +12,6 @@
         */
         public function router(string $action):void{
             $json = $this->parseJsonData();
-            
             switch($action){
                 case "checkIfExist":
                     $moviesId = $this->controller->pullMoviesId();
@@ -32,19 +31,20 @@
                     }
                     echo json_encode($differentsId);
                 break;
-                case "addMovie":
+                case "addMovies":
                    var_dump( $this->controller->newMovie($json) );
 
                 break; 
-                case "getMovie":
-                    $json = $this->parseJsonData();
-                    
-                    echo json_encode( $this->controller->pullOneMovie($json) );
- 
-                 break; 
+                case "getMovies":
+                    $movies = $this->controller->pullAllMoviesAdvanced($json);
+                    echo (json_encode($movies));
+                break;
+                default:
+                    echo "salut ;default";
+                break;
             }
         }
-        public function parseJsonData():array{
+        public function parseJsonData(){
             $json = file_get_contents("php://input");
             $json = json_decode($json, true);
             return $json;

@@ -1,6 +1,6 @@
 <?php
     namespace Models;
-
+    
     class Database{
         function __construct(){
             try {
@@ -48,8 +48,6 @@
                 }
                 $i++;
             }
-            print_r("<br>");
-            var_dump($req);
             return $req->execute();
         }
         /*
@@ -59,15 +57,20 @@
             "value" => l'élément de comparaison  
          */
         function getOneByRef(array $data):array{
-            if(intval($data["value"]) === 0)
-                return $error = [false];
+        
             $req = $this->bdd->prepare("SELECT * FROM $data[table] WHERE  $data[ref] = ?");
             $req->execute(["$data[value]"]);
-            return $result = $req->fetch(\PDO::FETCH_ASSOC);
+            return $result = $req->rowCount() > 0 ? $req->fetch(\PDO::FETCH_ASSOC) : [];
+
         }
 
         function getAllByTable(string $table):array{
             $req = $this->bdd->prepare("SELECT * FROM $table");
+            $req->execute();
+            return $result = $req->fetchAll(\PDO::FETCH_ASSOC);
+        }
+        function getAllByTableAdvanced(string $table,int $limit):array{
+            $req = $this->bdd->prepare("SELECT * FROM $table LIMIT $limit");
             $req->execute();
             return $result = $req->fetchAll(\PDO::FETCH_ASSOC);
         }
@@ -107,7 +110,6 @@
                 }
                 $i++;
             }
-            print_r("<br>");    
             return $req->execute();
         }
     }

@@ -1,6 +1,7 @@
 <?php
     namespace Models;
-
+    use \Controllers\NotificationController;
+    
     class Movies extends Database{
         function getAllMovies():array{
             $table = "movies";

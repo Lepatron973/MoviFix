@@ -19,3 +19,25 @@ $liMargin: 1rem;
     background-color: $primaryColor;
     color: $secondaryColor;
 }
+@mixin alert{
+    padding: 1rem;
+    .title{
+        text-align: center;
+        font-size: 1.6rem;
+    }
+    .simple-alert{
+        display: flex;
+        justify-content: space-between;
+        button{
+            @include button;
+            padding: 1rem;
+            background-color: $primaryColor;
+        }
+    }
+    .main-error{
+        span{
+
+            background-color: rgb(129, 155, 88);
+        }
+    }
+}

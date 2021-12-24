@@ -8,16 +8,25 @@ let init = {
   const id = urlParam[2];
   const detailMovieBlock = document.querySelector(".block-detail");
 
+  const startPath = "./?path=ajax&action=";
+const options = { method:"POST", body: ""};
+const params = "language=en-US&page=1,init";
+const endpoint = ["3/movie/now_playing"];
+const limit = 10;
+const API_KEY = "69ba83f78c85f28287d57b3ca8f8c45c";
+const host = {"api": "https://api.themoviedb.org","site": "https://www.themoviedb.org"};
+let param = "page=2"; 
+const imageSizePath = [ "/t/p/w220_and_h330_face", "/t/p/w440_and_h660_face", "/t/p/w600_and_h900_bestv2" ];
 
  
 
-    fetch(" https://api.themoviedb.org/3/movie/"+ id +"?api_key="+API_KEY+"&language=en-US&page=1")
+    fetch(" https://api.themoviedb.org/3/movie/"+ id +"?api_key="+API_KEY+"&language=fr-FR&page=1")
     .then(res=>{
       return res.json();
     })
     .then(res => {
-        divDetail = document.createElement("div");
-        ulGenre = document.createElement("ul");
+        const divDetail = document.createElement("div");
+        const ulGenre = document.createElement("ul");
         ulGenre.classList.add("genre-content");
 
         for (const element of res.genres) {

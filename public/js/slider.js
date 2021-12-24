@@ -1,5 +1,5 @@
 const slider = document.querySelector(".glide__slides");
-movieToDisplay = document.querySelectorAll('.slide').length
+const movieToDisplay = document.querySelectorAll('.slide').length
 var glide = new Glide('.glide', {
   type: 'carousel',
   perView: 3,

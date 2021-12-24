@@ -9,6 +9,10 @@
             $table = "movies";
             $datas = $this->model->getAllMovies($table);
             return $datas;
+        }function pullAllMoviesAdvanced(int $limit):array{
+            $table = "movies";
+            $datas = $this->model->getAllByTableAdvanced($table,$limit);
+            return $datas;
         }
         function pullOneMovie(string $id):array{
             $table = "movies";

@@ -2,6 +2,7 @@
 /vendor
 /tests
 /logs
+/node_modules
 .env
 composer.json
 composer.lock

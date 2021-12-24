@@ -1,5 +1,6 @@
 .alert {
   padding: 1rem;
+  padding: 1rem;
   background-color: #c96262; }
   .alert .title {
     text-align: center;
@@ -18,7 +19,61 @@
     background-color: #819b58; }
 
 .warning {
+  padding: 1rem;
   background-color: #d49356; }
+  .warning .title {
+    text-align: center;
+    font-size: 1.6rem; }
+  .warning .simple-alert {
+    display: flex;
+    justify-content: space-between; }
+    .warning .simple-alert button {
+      padding: 2rem;
+      border: 1px solid #e4d804;
+      cursor: pointer;
+      border-radius: 50px;
+      padding: 1rem;
+      background-color: #e4d804; }
+  .warning .main-error span {
+    background-color: #819b58; }
+
+.success {
+  padding: 1rem;
+  background-color: #75a437; }
+  .success .title {
+    text-align: center;
+    font-size: 1.6rem; }
+  .success .simple-alert {
+    display: flex;
+    justify-content: space-between; }
+    .success .simple-alert button {
+      padding: 2rem;
+      border: 1px solid #e4d804;
+      cursor: pointer;
+      border-radius: 50px;
+      padding: 1rem;
+      background-color: #e4d804; }
+  .success .main-error span {
+    background-color: #819b58; }
+
+.failed {
+  padding: 1rem;
+  background-color: #dab655; }
+  .failed .title {
+    text-align: center;
+    font-size: 1.6rem; }
+  .failed .simple-alert {
+    display: flex;
+    justify-content: space-between; }
+    .failed .simple-alert button {
+      padding: 2rem;
+      border: 1px solid #e4d804;
+      cursor: pointer;
+      border-radius: 50px;
+      padding: 1rem;
+      background-color: #e4d804; }
+  .failed .main-error span {
+    background-color: #819b58; }
 
 .block-form-content h2 {
   text-align: center; }
@@ -144,7 +199,7 @@ header {
   display: flex;
   flex-wrap: wrap; }
   .block-2 .block-2-content .movies .movie {
-    flex-basis: 30%;
+    flex-basis: 15%;
     margin: 1rem; }
     .block-2 .block-2-content .movies .movie figure {
       display: flex;

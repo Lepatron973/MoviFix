@@ -1,18 +1,14 @@
 "use-strict";
-const startPath = "./?path=ajax&action=";
-const options = {
-    method:"POST",
-    body: ""
-  };
-
-/* 
-    cette fonction crée une div avec un design prédéfinie par le css
-    elle doit être utilisée dans une boucle
-*/
-
-function createSlide(){
-
-}
+import createMovieDiv from "./templates.js";
+export const ajaxReq = "./?path=ajax&action=";
+export const options = { method:"POST", body: ""};
+export const params = "language=en-US&page=1,init";
+export const endpoint = ["3/movie/now_playing"];
+export const limit = 10;
+export const API_KEY = "69ba83f78c85f28287d57b3ca8f8c45c";
+export const host = {"api": "https://api.themoviedb.org","site": "https://www.themoviedb.org"};
+export const nbPage = "page=2"; 
+export const imageSizePath = [ "/t/p/w220_and_h330_face", "/t/p/w440_and_h660_face", "/t/p/w600_and_h900_bestv2" ];
 /* 
     fonction qui permet la récupération des films depuis l'api
     l'affichage de ces dernier en passant par la fonction 
@@ -20,28 +16,11 @@ function createSlide(){
     si ils ne sont pas présent dans la DB avec la fonction
     -> addMovieFromApi()
 */
-const params = "language=en-US&page=1,init"
 
-const endpoint = [
-  "3/movie/now_playing",
-]
-const limit = 10;
-API_KEY = "69ba83f78c85f28287d57b3ca8f8c45c";
-const host = {
-  "api": "https://api.themoviedb.org",
-  "site": "https://www.themoviedb.org"
-}
-let param = "page=2"; 
-const imageSizePath = [
-  "/t/p/w220_and_h330_face",
-  "/t/p/w440_and_h660_face",
-  "/t/p/w600_and_h900_bestv2"
-]
-async function getMovieFromApi(host,path,param,limit,parentElement,action = "home_movie"){
-    let language = "language=en-US";
+export async function getMovieFromApi(host,path,param,limit,parentElement,action = "home_movie"){
+    let language = "language=fr-FR";
     
-    req = `${host.api}/${path}?api_key=${API_KEY}&${language}&${param}`;
-    const data = {};
+    const req = `${host.api}/${path}?api_key=${API_KEY}&${language}&${param}`;
     const movies = [];
     const ids = [];
     fetch(req)
@@ -83,11 +62,12 @@ async function getMovieFromApi(host,path,param,limit,parentElement,action = "hom
           // console.log(movies)
           options.body = JSON.stringify( ids);
     
-          const req = new Request(startPath+"checkIfExist", options)
+          const req = new Request(ajaxReq+"checkIfExist", options)
           addMovieFromApi(req,movies,options);
       }
     })
 }
+
 
 /* 
     cette fonction récupère les films issue de l'api TMDB
@@ -96,7 +76,7 @@ async function getMovieFromApi(host,path,param,limit,parentElement,action = "hom
     la fonction communique avec un contrôleur qui attend
     une requête sur la route "ajax" 
 */
-function addMovieFromApi(req,movies,options){
+export function addMovieFromApi(req,movies,options){
     fetch(req)
     .then(res=>{       
       return res.json();
@@ -113,7 +93,7 @@ function addMovieFromApi(req,movies,options){
           
               options.body = JSON.stringify(movie);
               
-              let req = new Request(startPath+"addMovie", options);
+              let req = new Request(ajaxReq+"addMovie", options);
             fetch(req);
           } 
       }else{
@@ -126,19 +106,19 @@ function addMovieFromApi(req,movies,options){
             
             options.body = JSON.stringify(movie);
             console.log(options)
-            let req = new Request(startPath+"addMovie", options);
+            let req = new Request(ajaxReq+"addMovies", options);
             fetch(req);
           }   
         }
       }
     })
   }
-  
+ export * from "./utilities.js" ;
   
 //   function addCart(){
 //     const id = this.getAttribute('index');
 //     options.body = JSON.stringify(id)
-//     const req = new Request(startPath+"getMovie",options);
+//     const req = new Request(ajaxReq+"getMovie",options);
 //     fetch(req)
 //     .then(res => {return res.json()})
 //     .then(res =>{

@@ -1,26 +1,17 @@
 .alert{
+    @include alert;
     padding: 1rem;
     background-color: rgb(201, 98, 98);
-    .title{
-        text-align: center;
-        font-size: 1.6rem;
-    }
-    .simple-alert{
-        display: flex;
-        justify-content: space-between;
-        button{
-            @include button;
-            padding: 1rem;
-            background-color: $primaryColor;
-        }
-    }
-    .main-error{
-        span{
-
-            background-color: rgb(129, 155, 88);
-        }
-    }
 }
 .warning{
+    @include alert;
     background-color: rgb(212, 147, 86);
+}
+.success{
+    @include alert;
+    background-color: #75a437;
+}
+.failed{
+    @include alert;
+    background-color: rgb(218, 182, 85);
 }

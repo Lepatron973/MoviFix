@@ -9,7 +9,7 @@ function createElement(elementTag,parentElement,template,classElement = null){
 }
 
 
-function createMovieDiv(element,host,imageSizePath){
+export default function createMovieDiv(element,host,imageSizePath){
     let domElement = document.createElement("div");
     domElement.innerHTML = 
     `

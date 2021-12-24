@@ -18,7 +18,7 @@
         <h2>Un changement d'identité !?</h2>
         <div class="block-form-content container">
 
-            <form method="POST" action="./?path=profile&update=1" enctype="multipart/form-data">
+            <form method="POST" action="/profile/update" enctype="multipart/form-data">
                 <div class="input-block">
                     <label for="firstname"> Nom</label>
                     <input type="text" name="firstname" value="<?= $_SESSION['user']['firstname'] ?>"></div>

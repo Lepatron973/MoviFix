@@ -17,10 +17,20 @@
 </div>
 <?php endif;?>
 <?php if(isset($errors)): ?>
-<div class="alert warning">
+<div class="warning">
     <p class="title">Avertissement</p>
     <?php $index2 = 0; foreach($errors as $error): ?>
         <p> Fichier concerné : <?= $error["file"] ?> || Message: <?= $error["message"] ?> || Ligne: <?= $error["line"] ?></p>
     <?php endforeach; ?>
 </div>
+<?php endif;?>
+<?php if(count($GLOBALS["notifications"]) > 0): ?>
+    <?php for($i = 0; $i< count($GLOBALS["notifications"]); $i++): ?>
+    <!-- ici on boucle sur le tableau de notification et arrivé au premier élément qui représente le type (succès ou échec) -->
+    <!-- on ajoute 1 à l'index pour atteindre le message de notification et donc récupérer toute les infos nécessaire pour remplire la div de notification -->
+        <div class="<?= $GLOBALS["notifications"][$i]; $i++; ?>">
+            <p class="title">Information</p>
+            <p> <?= $GLOBALS["notifications"][$i] ?> </p>
+        </div>
+    <?php endfor;?>
 <?php endif;?>

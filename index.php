@@ -1,19 +1,27 @@
 <?php
     session_start();
-    
+
     // Mettre le mod "debug" pour afficher les erreurs;
     putenv("mod=debug");
-    require_once "./config/config.php";
-    require_once "./lib//utilities.php";
-    require_once "./controllers/Controller.php";
-    require_once "./models/Database.php";
-    require_once "./controllers/ErrorController.php";
-    use \Controllers\ErrorController;
-    ErrorController::setErrorReporting();
+
+    // MISE EN PLACE DES VARIABLES GLOBALES
     $GLOBALS["exceptions_message"] = [];
     $GLOBALS["exceptions"] = [];
     $GLOBALS["errors_message"] = [];
     $GLOBALS["errors"] = [];
+    $GLOBALS["notifications"] = [];
+    // APPEL DES FICHIERS DE CONFIGURATION ET DE GESTION DU SITE
+    require_once "./config/config.php";
+    require_once "./lib//utilities.php";
+    require_once "./controllers/ErrorController.php";
+    require_once "./controllers/NotificationController.php";
+    require_once "./controllers/Controller.php";
+    require_once "./models/Database.php";
+    
+    // MISE EN PLACE DE LA GESTION DES ERREURS PERSONALISÉ
+    use \Controllers\ErrorController;
+    ErrorController::setErrorReporting();
+
     set_error_handler($errorHandler);
     spl_autoload_register(function ($class) {
        $file =  lcfirst(str_replace('\\','/',$class));
@@ -21,6 +29,8 @@
         //   echo $file . "<br />";
         require_once ROOT_DIR ."/". $file . '.php';
     });
+
+
     if(!isset($_SESSION["user"])){
         $_SESSION["user"] = array(
             "status" => false
@@ -46,21 +56,12 @@
             case "home":
                 
                 $controller = new Controllers\MovieController($page);
-                $controller->addStyle("glide.core.min");
-                $controller->addStyle("glide.theme.min");
-                $controller->addScript("glide.min");
                 $controller->addScript("home");
-                $controller->addScript("slider");
+                //$controller->addScript("slider");   
                 try {
-                    $movies = $controller->pullAllMovies();
-                }catch (\Throwable $e) {
-                    ErrorController::connexionFailed($e);
-                }
-                try {
-                    $controller->display($movies);
+                    $controller->display();
                 }catch (\TypeError $e) {
                     ErrorController::typeError($e);
-                    $controller->display([]);
                 }
                 
             break;
@@ -81,7 +82,7 @@
                 if($_GET["param2"] =="addUser")
                     $controller->registration();
                     try {
-                        $controller->display($movies);
+                        $controller->display();
                     }catch (\TypeError $e) {
                         ErrorController::typeError($e);
                         $controller->display([]);
@@ -117,13 +118,11 @@
                 $controller = new Controllers\UserController($page);
                 $controller->addScript($page['name']);
                 $controller->addScript("inscription");
-                if(!$_GET['update']){
-                    
-                }else{
-                   $controller->modifyUser();
-                }
                 try {
-                    $controller->display($movies);
+                    if($_GET['param2'] == "update"){
+                        $controller->modifyUser(); 
+                    }
+                    $controller->display();
                 }catch (\TypeError $e) {
                     ErrorController::typeError($e);
                     $controller->display([]);
