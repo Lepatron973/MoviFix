@@ -1,49 +1,63 @@
-.block-detail{
-    .block-detail-content{
+.block-detail{      
+    justify-content: center;
+    align-items: flex-start;
+    .content{
+        margin: 2rem;
+        img{
+            max-height: 600px;
+
+        }
+    }
+    .text-content{
+        max-height: 575px;
+        flex-basis: 28%;
+        padding: 1rem;
+        background-color: #222;
+        position: relative;
+    }
+    .sub-content{
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        justify-content: space-between;
+
+    }
+    .genre-content{
+        padding: 0;
+        display: flex;
+        li{
+            margin-right: 1rem;
+        }
+    }
+    .add-cart-content{
+        position: absolute;
+        display: block;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $primaryColor;
+        padding: 1rem;
+        font-size: 3rem;
+        &:hover{
+            cursor: pointer;
+        }
+
+        
+        
+    }
+    @media screen and (min-width: 620px){
+        display: flex;
         .content{
             margin: 2rem;
+        }
+        .image-content{
+            flex-basis: 30%;
             img{
-                height: 670px;
-
+                min-height: 424px;
             }
         }
         .text-content{
             height: 650px;
-            flex-basis: 28%;
-            padding: 1rem;
-            background-color: #222;
-            position: relative;
         }
-        .sub-content{
-            display: flex;
-            justify-content: space-between;
-
-        }
-        .genre-content{
-            padding: 0;
-            display: flex;
-            li{
-                margin-right: 1rem;
-            }
-        }
-        .add-cart-content{
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: $primaryColor;
-            &:hover{
-                cursor: pointer;
-            }
-            p{
-                margin: 1rem;
-                font-size: 3rem;
-            }
-        }
+        
     }
 }

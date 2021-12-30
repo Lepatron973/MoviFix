@@ -27,7 +27,7 @@
 .block-2{
     .block-2-content{
 
-        .header-block-2{
+        .element-b2{
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -52,6 +52,7 @@
                     margin: auto;
                     img{
                         border-radius: .5rem;
+                        max-width: none;
                     }
                     .home-movie-image{
                         max-height: 330px;
@@ -140,6 +141,13 @@
             float: left;
             margin: 1rem;
             max-width: 45%;
+        }
+        .banner-image + div{
+            &::after{
+                clear: both;
+                display: block;
+                content: "";
+            }
         }
     }
 }

@@ -1,13 +1,13 @@
 import React, {useState,useEffect} from 'react';
-import { ajaxReq, options, imageSizePath } from '../utilities';
+import { ajaxPath, options, imageSizePath } from '../utilities';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-const Slider = () => {
+const Slider = (props) => {
    
     const [movies, setmovies] = useState([]);
     options.body = JSON.stringify(10);
     let index = 0;
-    const req = new Request(ajaxReq+"getMovies", options)
+    const req = new Request(ajaxPath+"getMovies", options)
     useEffect(()=>{
 
         const result = fetch(req)
@@ -17,11 +17,12 @@ const Slider = () => {
         .then((res)=>{
             setmovies(res);
         })
- 
+        console.log("load slider component")
     },[])
     
     return (
         <>
+        <h2>{props.title}</h2>
          <Splide
             options={ {
                 rewind: true,
@@ -33,7 +34,7 @@ const Slider = () => {
                 {movies.map(movie=>(
                     <SplideSlide key={index++}>
                         <div className="glide__slide slide" >
-                            <img src={`https://www.themoviedb.org/${imageSizePath[0]}/${movie.image}`} alt={movie.title} />
+                            <img src={`${imageSizePath}/w200/${movie.image}`} alt={movie.title} />
                         </div>
                     </SplideSlide>
                 ))}

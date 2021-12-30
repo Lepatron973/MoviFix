@@ -1,25 +1,5 @@
-.block-inscription-content{
-    .inscription-image{
-        text-align: center;
-        img{
-            border: 1px double;
-            height: 25rem;
-            width: 25rem;
-            border-radius:50%;
-        }
-    }
+.block-inscription{
     h2{
         text-align: center;
-    }
-    @media screen and (max-width: 620px) {
-        .inscription-image{
-            text-align: center;
-            img{
-                border: 1px double;
-                height: 15rem;
-                width: 15rem;
-                border-radius:50%;
-            }
-        }
     }
 }

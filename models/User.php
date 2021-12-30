@@ -4,8 +4,7 @@
 
     class User extends Database{
         function addUser():void{
-            $_POST["table"] = "users";
-                         
+            $_POST["table"] = "users";        
             $userToCheck = array(
                 "table" =>  "users",
                 "ref" => "email",
@@ -18,8 +17,10 @@
                     $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     $_POST['image'] = $_FILES['image']['name'];
                     $messageImageDownload = move_uploaded_file($_FILES['image']['tmp_name'],$uploadFile) ? "Image téléchargée !" : "L'image n'a pas pu être téléchargée";
-                    $this->insert($_POST);
-                    NotificationController::notification(1,"Enregistrement réussi");
+                    if($this->insert($_POST))
+                        NotificationController::notification(1,"Enregistrement réussi");
+                    else
+                        NotificationController::notification(0,"Enregistrement échoué");
                 }
                 else
                 NotificationController::notification(0,"Cet utilisateur est déjà créé");

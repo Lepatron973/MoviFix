@@ -1,55 +1,77 @@
-.block-cart-content{
-    table{
-        width: 100%;
-        background-color: grey;
-        tr{
+.block-cart{
+    .container{  
+        margin: 1rem;
+        color: grey;
+        padding: 1rem;
+        margin-bottom: 1rem;     
+        background-color: whitesmoke
+    }
+    &:first-child{
+        border-bottom: 1px solid grey;
+    }
+    .container-articles-cart{
+        flex-basis: 100%;
+        .article{
             display: flex;
             justify-content: space-between;
-        }
-        thead{
-            tr{
-                border-bottom: 1px solid yellow;
+            border: 1px dotted grey;
+            padding: .4rem;
+            .container-image{
+                flex-basis: 30%;
             }
-        }
-        tbody{
-            .quantity{
-                display: flex;
-                input::-webkit-outer-spin-button,
-                input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-                }
-                input{
-                    -moz-appearance: textfield;
-                    width: 5rem;
-                    margin-right: .5rem;
-                }
-                span{
-                    margin-right: .5rem;
+            .info-article{
+                flex-basis:60%
+            }
+            .delete-article{
+                flex-basis: 10%;
+                i{
+                    color: red;
                 }
             }
         }
     }
-    .cart-bottom{
+    .container-payement{
         display: flex;
-        justify-content: flex-end;
-    }
-    .total-amount-content{
-        span{
-            margin: 0 1rem;
+        flex-direction: column;
+        flex-basis: 100%;
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        padding-right: .3rem;
-    }
-    .validate-cart-content{
-            .button{
-                padding: .6rem;
-                margin: 1rem;
-                &:first-child{
-                    &:hover{
-                        background-color: rgb(0, 153, 255);
-                    }
-                }
-                
+        .btn-payement-container{
+            background-color: rgb(91, 110, 61);
+            justify-content: center;
+            padding: 1rem;
+        }
+        ul{
+            display: flex;
+            padding-left: 0;
+            li{
+                margin: .4rem;
             }
+        }
+    }
+    @media screen and (min-width:620px){
+       display: flex;
+        .container{
+            align-self: flex-start;
+        }
+        .container-articles-cart{
+            height: 500px;
+            overflow: auto;
+            flex-basis: 60%;
+            .article{
+                .add-one{
+                    color: green;
+                }
+                .remove-one{
+                    color: red;
+                }
+            }
+        }
+        .container-payement{
+            flex-basis: 35%;
+        }
     }
 }

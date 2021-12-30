@@ -1,6 +1,6 @@
 <?php
     namespace Controllers;
-
+    
     class Controller{
         protected $view;
         protected $model;
@@ -14,9 +14,7 @@
             }else{
                 $this->view = "home";
             }
-            $this->scripts = array("utilities");
-            $this->addScript("main");
-            $this->addScript("templates");
+            $this->scripts = array("main");
             $this->styles = array("style");
 
         }
@@ -40,4 +38,5 @@
         public function addStyle(string $style):void{
             array_push($this->styles,$style);
         }
+    
     }

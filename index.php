@@ -57,7 +57,6 @@
                 
                 $controller = new Controllers\MovieController($page);
                 $controller->addScript("home");
-                //$controller->addScript("slider");   
                 try {
                     $controller->display();
                 }catch (\TypeError $e) {
@@ -94,6 +93,8 @@
                 $controller->addScript($page['name']);
                 // var_dump($_GET);
                 if($_GET['param2']==1){
+                    if($_SESSION['user']['status'])
+                        header("location: /home"); 
                     try {
                         $controller->connexion();
                     }catch (\TypeError $e) {
@@ -114,10 +115,11 @@
                 header("location: /home");
             break;
             case "profile":
+                if(!$_SESSION['user']['status'])
+                    header("location: /home"); 
                 $page["model"] = new Models\User();
                 $controller = new Controllers\UserController($page);
                 $controller->addScript($page['name']);
-                $controller->addScript("inscription");
                 try {
                     if($_GET['param2'] == "update"){
                         $controller->modifyUser(); 
@@ -147,8 +149,7 @@
                 $page["model"] = new Models\Movies();
                 $controller = new Controllers\CartController($page);
                 $controller->addScript($page['name']);
-                $cart = $controller->getCart();
-                $controller->display($cart);
+                $controller->display();
             break;
             case "ajax":
                 try {
@@ -174,5 +175,5 @@
             break;
         }
     }else{
-        header("location: ./home");
+        header("location: /home");
     }

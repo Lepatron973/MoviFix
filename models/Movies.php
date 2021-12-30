@@ -9,12 +9,11 @@
             return $datas;
         }
         public function getMoviesId():array{
-            $ref = "id_api_movie";
+            $ref = "id_api";
             $table = "movies";
             return $this->getSpeceficData($ref,$table);
         }
         function getOneMovie(string $id):array{
-            $table = "movies";
             $movieToGet = array(
                 "table" =>  "movies",
                 "ref" => "id_api_movie",

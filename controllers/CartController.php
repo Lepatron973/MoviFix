@@ -13,6 +13,9 @@
             $this->cart = $cart;
 
         }
+        public function resetCart(array $cart):void{
+            setcookie("panier",json_encode($cart),$this->expireDate,"/");
+        }
         public function addToCart(string $id):void{
             array_push($this->cart,$id);
             setcookie("panier",json_encode($this->cart),$this->expireDate,"/");
@@ -34,6 +37,7 @@
                     $newCart['id'] = $id;
                     $newCart['title'] = $movie['title'];
                     $newCart['price'] = $movie['price'];
+                    $newCart['image'] = $movie['image'];
                     $newCart['quantity'] = 1;
 
                 if(!in_array($id,$idRef)){
@@ -44,33 +48,29 @@
                     
                     $index = array_search($newCart,$cart);
                     $cart[$index]['quantity'] += 1;
+                    $cart[$index]['price'] +=  $newCart['price'];
                 }
             }   
             return $cart;
         }
-        public function array_icount_values(array $arr, bool $lower=true):array {
-            $arr2 = array();
-    
-            if(count($arr)!=0){
-                if(!is_array($arr['0'])) {
-                    $arr = array($arr);
-                }
-    
-                foreach($arr as $k=> $v){
-                    foreach($v as $v2){
-                        if($lower == true) {
-                            $v2 = strtolower($v2);
-                        }
-                        if(!isset($arr2[$v2])){
-                            $arr2[$v2] = 1;
-                        }else{
-                            $arr2[$v2]++;
-                        }
-                    }
-                }
-                return $arr2;
-            }
-        }
         
+        public function removeOneArticle(string $id):array{
+            $newCart = [];
+            $this->setCart();
+            $cart = $this->cart;
+            $indexArticle = array_search($id,$cart);
+            // var_dump($cart);
+            unset($cart[$indexArticle]);
+            foreach($cart as $article){
+                $newCart[] = $article;
+            }
+            // var_dump($newCart);
+            $this->resetCart($newCart);
+            return $newCart;
+        }
+        public function removeAllArticles(){
+            $cart = [];
+            $this->resetCart($cart);
+        }
 
     }

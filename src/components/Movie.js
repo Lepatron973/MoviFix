@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import * as utils from '../utilities.js';
 const Movie = () => {
     const limit = 10;
-    const req = `${utils.host.api}/${utils.endpoint[0]}?api_key=${utils.API_KEY}&${utils.language}&${utils.nbPage}`;
+    const req = `${utils.host.api}/${utils.movieEndpoint.popular}?api_key=${utils.API_KEY}&${utils.language}&${utils.nbPage}`;
     const movies = [];
     const ids = [];
     const [movieState, setMovies] = useState([]);
@@ -36,13 +36,16 @@ const Movie = () => {
           }
           setMovies(movies)
           utils.options.body = JSON.stringify( ids);
-          const req = new Request(utils.ajaxReq+"checkIfExist", utils.options)
-          utils.addMovieFromApi(req,movies,utils.options);
+          const req = new Request(utils.ajaxPath+"checkIfExist", utils.options)
+          // utils.addMovieFromApi(req,movies,utils.options);
+          console.log("load component movie");
         })
     },[])
 
     return(
-     <MovieCard movies={movieState} />
+      <div className="movies">
+        <MovieCard movies={movieState} addOne={utils.addOneArticleToCart}/>
+      </div>
     )
 };
 

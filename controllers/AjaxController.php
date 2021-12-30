@@ -2,7 +2,7 @@
     namespace Controllers;
 
     class AjaxController {
-        function __construct(object $controller){
+        function __construct(Controller $controller){
             
             $this->controller = $controller;
         }
@@ -12,6 +12,7 @@
         */
         public function router(string $action):void{
             $json = $this->parseJsonData();
+            
             switch($action){
                 case "checkIfExist":
                     $moviesId = $this->controller->pullMoviesId();
@@ -39,14 +40,52 @@
                     $movies = $this->controller->pullAllMoviesAdvanced($json);
                     echo (json_encode($movies));
                 break;
+                case "getCart":
+                    $page = [
+                        "name"=>"cart",
+                        "model"=>new \Models\Movies()
+                    ];
+                    $this->setController(new \Controllers\CartController($page));
+                    $cart = $this->controller->getCart();
+                    $this->sendJsonData($cart);
+                break;
+                case "removeOneArticleFromCart":
+                    $page = [
+                        "name"=>"cart",
+                        "model"=>new \Models\Movies()
+                    ];
+                    $this->setController(new \Controllers\CartController($page));
+                    $cart = $this->controller->removeOneArticle($json);
+                    $cart = $this->controller->getCart();
+                    $this->sendJsonData($cart);
+                break;
+                case "addCart":
+                    $page = [
+                        "name"=>"cart",
+                        "model"=>new \Models\Movies()
+                    ];
+                    $this->setController(new \Controllers\CartController($page));
+                    $this->controller->setCart();//permet de mettre à jour le panier
+                    $this->controller->addToCart($json);
+                break;
+                case "getProfile":
+                    $this->sendJsonData($_SESSION['user']);
+                break;
                 default:
-                    echo "salut ;default";
+                    echo "default:" . var_dump($action);
                 break;
             }
         }
-        public function parseJsonData(){
+        static public function parseJsonData(){
             $json = file_get_contents("php://input");
             $json = json_decode($json, true);
             return $json;
+        }
+        static public function sendJsonData(array $data):void{
+            
+            echo json_encode($data);
+        }
+        public function setController(Controller $controller):void{
+            $this->controller = $controller;
         }
     }

@@ -1,47 +1,73 @@
-.block-form-content{
-    h2{
+form{
+    border: 1px solid;
+    border-radius: 5%;
+    background-color: rgba(64, 64, 89, 0.3);
+    max-width: 360px;
+    margin: auto;
+    position: relative; 
+    .title{
         text-align: center;
+        font-size: 2rem;
+        margin: 2rem;
     }
-    form{
+    .form-image{
+        position: relative;
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-        .input-block{
-            flex-basis: 45%;
-            label{
-                display: block;
-                margin: 1.5rem 0;
-            }
-            input[type=text],input[type=password],input[type=file],input[type=email]{
-                display: block;
-                padding: 1rem 0;
-                background: none;
-                color: $secondaryColor;
-                width: 90%;
-                border: 0px;
-                border-bottom: 1px solid wheat;
-            }
-            input[type=file]{
-                margin: -.6rem 0 .6rem 0;
-            }
+        align-items: center;
+        padding:4rem 0;
+        img{
+            position: absolute;
+            border: 1px double;
+            top: -5rem;
+            height: 10rem;
+            width: 10rem;
+            border-radius:50%;
+            box-shadow: black 10px 5px 5px ;
+            z-index: 2;
         }
-        .text-area{
-            flex-basis: 90%;
-            textarea{
-                width: 90%;
-                color: $secondaryColor;
-                background: none;
-                border: 0px;
-                border-bottom: 1px solid wheat;
-            }
+    }
+    .input-icon{
+        position: relative;
+        text-align: center;
+        margin: 1.5rem 0;
+        i{
+            position: absolute;
+            top: 2rem;
+        }
+        i:first-child{
+            left: 3rem;
+            color:$primaryColor;
+        }
+        .password+i{
+            position: absolute;
+            color: gray;
+            right: 2.5rem;
+            cursor: pointer;
+        }
+        input{
+            padding: 1.5rem 0 1.5rem 3rem;
+            min-width: 80%;
+            border-radius: 6px;
         }
         input[type=submit]{
-            flex-basis: 20%;
-            padding: 1rem;
-            margin: 1rem 0;
-            border: 1px dashed;
-            cursor: pointer;
+            padding: 1rem 0;
+            text-align: center;
+            border-radius: 10% / 50%;
             background-color: $primaryColor;
+            font-size: 2rem;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+    @media screen and(min-width: 620px) {
+        .input-icon{
+            
+            i{   
+                top: 1.6rem; 
+            }
+            
         }
     }
 }

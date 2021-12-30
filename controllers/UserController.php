@@ -5,6 +5,8 @@
     class UserController extends Controller{
 
         function registration():void{
+            if(isset($_POST['submit']))
+                unset($_POST['submit']);  
             $this->model->addUser();
         }
         function connexion():void{
@@ -22,6 +24,8 @@
             }
         }
         function modifyUser():void{
+            if(isset($_POST['submit']))
+                unset($_POST['submit']);
             if($this->model->updateUser()){
                 NotificationController::notification(1,"Mise à jour éffectuée");
                 $_SESSION['user']['firstname'] = $_POST['firstname'];

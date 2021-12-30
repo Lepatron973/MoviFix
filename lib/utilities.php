@@ -19,9 +19,11 @@
         if( $yearStart != $yearEnd ){
             // à chSomething is wrong entre 2 années
             $result = strftime("%d %B %Y", $timeStart)."-".strftime("%d %B %Y", $timeEnd);
+            $dates = strftime("%d", $timeStart)."-".strftime("%d", $timeEnd);
         } elseif( $moisStart != $moisEnd ){
             // à chSomething is wrong entre 2 mois
             $result = strftime("%d %B", $timeStart)."-".strftime("%d %B %Y", $timeEnd);
+            $dates = strftime("%d", $timeStart)."-".strftime("%d", $timeEnd);
         } else {
             // même mois
             $result = strftime("%d", $timeStart)."-".strftime("%d %B %Y", $timeEnd);
