@@ -286,8 +286,15 @@ header {
 
 .block-2 .block-2-content .element-b2 {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center; }
+  .block-2 .block-2-content .element-b2 .sort-input {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem; }
+    .block-2 .block-2-content .element-b2 .sort-input label {
+      margin-bottom: 1rem; }
   .block-2 .block-2-content .element-b2 ul {
     display: flex; }
     .block-2 .block-2-content .element-b2 ul li {
@@ -336,6 +343,9 @@ header {
           cursor: pointer;
           transform: rotate(30deg) scale(1.5);
           color: #e4d804; }
+@media screen and (min-width: 620px) {
+  .block-2 .block-2-content .element-b2 {
+    flex-direction: row; } }
 
 .block-3 {
   padding: 5rem 0;
@@ -344,14 +354,6 @@ header {
 .block-4 .block-4-content div {
   flex-basis: 50%; }
 
-@media screen and (max-width: 620px) {
-  .block-2-content .button {
-    padding: .5rem;
-    margin: .5rem; }
-  .block-2-content .movie-info-top, .block-2-content .movie-info-center {
-    display: none; }
-  .block-2-content .movie {
-    flex-basis: 40%; } }
 @media screen and (min-width: 620px) {
   .movie {
     flex-basis: 22%; }

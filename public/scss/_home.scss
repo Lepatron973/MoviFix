@@ -29,8 +29,17 @@
 
         .element-b2{
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            .sort-input{
+                display: flex;
+                flex-direction: column;
+                margin: 1rem;
+                label{
+                    margin-bottom: 1rem;
+                }
+            }
             ul{
                 display: flex;
                 li{
@@ -99,6 +108,13 @@
                 }
             }
         }
+        @media screen and (min-width: 620px){
+        
+            .element-b2{
+               flex-direction: row; 
+            }
+        }
+        
     }
 }
 .block-3{
@@ -116,27 +132,13 @@
         }
     }
 }
-@media screen and (max-width: 620px){
-    
-    .block-2-content{
-       
-       .button{
-          padding: .5rem;
-          margin: .5rem;
-       }
-       .movie-info-top, .movie-info-center{
-           display: none;
-       }
-       .movie{
-           flex-basis: 40%;
-       }
-    }
-}
+
 
 @media screen and (min-width: 620px){
     .movie{
         flex-basis: 22%;
     }
+    
     .block-4-content{
         
         .banner-image{
