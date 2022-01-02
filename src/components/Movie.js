@@ -1,10 +1,12 @@
 import MovieCard from './MovieCard.js';
 import React from 'react';
 import {useState, useEffect} from 'react'
-import * as utils from '../utilities.js';
+import {host,getMovieEndpoint,language, API_KEY, options, AjaxRequest,addOneArticleToCart} from '../utilities.js';
 const Movie = () => {
+    let pageNumber = "page=2"
+    let movieEndPoint = getMovieEndpoint("popular");
     const limit = 10;
-    const req = `${utils.host.api}/${utils.movieEndpoint.popular}?api_key=${utils.API_KEY}&${utils.language}&${utils.nbPage}`;
+    const req = `${host.api}/${movieEndPoint}?api_key=${API_KEY}&${language}&${pageNumber}`;
     const movies = [];
     const ids = [];
     const [movieState, setMovies] = useState([]);
@@ -35,16 +37,16 @@ const Movie = () => {
             i++;
           }
           setMovies(movies)
-          utils.options.body = JSON.stringify( ids);
-          const req = new Request(utils.ajaxPath+"checkIfExist", utils.options)
-          // utils.addMovieFromApi(req,movies,utils.options);
-          console.log("load component movie");
+          options.body = JSON.stringify( ids);
+          const req = AjaxRequest("checkIfExist");
+          // addMovieFromApi(req,movies,options);
+          
         })
     },[])
 
     return(
       <div className="movies">
-        <MovieCard movies={movieState} addOne={utils.addOneArticleToCart}/>
+        <MovieCard movies={movieState} addOne={addOneArticleToCart}/>
       </div>
     )
 };

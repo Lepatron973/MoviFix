@@ -1,6 +1,7 @@
 .block-detail{      
     justify-content: center;
     align-items: flex-start;
+    position: relative;
     .content{
         margin: 2rem;
         img{
@@ -14,35 +15,86 @@
         padding: 1rem;
         background-color: #222;
         position: relative;
-    }
-    .sub-content{
-        display: flex;
-        justify-content: space-between;
-
-    }
-    .genre-content{
-        padding: 0;
-        display: flex;
-        li{
-            margin-right: 1rem;
+        .sub-content{
+    
+            .sub-content-child{
+                display: flex;
+                justify-content: space-between;
+        
+            }
         }
+        h2{
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            i{
+                color: #3994b6;
+                &:hover{
+                    color:rgb(49, 49, 219);
+                    cursor: pointer;
+                }
+            }
+        }
+        .genre-content{
+            padding: 0;
+            display: flex;
+            li{
+                margin-right: 1rem;
+            }
+        }
+        .add-cart-content{
+            position: absolute;
+            display: block;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: $primaryColor;
+            padding: 1rem;
+            font-size: 3rem;
+            &:hover{
+                cursor: pointer;
+            }
+        }      
     }
-    .add-cart-content{
+    .video-container{
         position: absolute;
-        display: block;
-        text-align: center;
-        bottom: 0;
-        left: 0;
+        top: 0;
         right: 0;
-        background-color: $primaryColor;
-        padding: 1rem;
-        font-size: 3rem;
-        &:hover{
-            cursor: pointer;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.49);
+        p{
+            // position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            font-size: 1.6rem;
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem;
+            align-items: center;
+            i{
+                &:hover{
+                    color: red;
+                    cursor: pointer;
+                }
+            }
         }
-
-        
-        
+        .iframe-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            iframe{
+                position: relative;
+                min-height: 400px;
+                //width: 500px;
+            }
+        }
     }
     @media screen and (min-width: 620px){
         display: flex;
@@ -53,10 +105,17 @@
             flex-basis: 30%;
             img{
                 min-height: 424px;
+                height: 650px;
             }
         }
         .text-content{
             height: 650px;
+            .sub-content{
+                
+            }
+            a{
+                margin-top: 1rem;
+            }
         }
         
     }

@@ -5,6 +5,7 @@
     define("ADMIN_DIR",ROOT_DIR."/admin");
     define("VIEW_ADMIN_DIR",ROOT_DIR."/admin/views");
     define("SRC_PUBLIC",getcwd());
+    define("MOD","debug");
     define("BDD_CONNECT", array(
         "dbname"=>"movifix;",
         "host"=>"localhost",

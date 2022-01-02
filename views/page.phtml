@@ -15,14 +15,14 @@
 </head>
 <body>
     <?php include VIEW_DIR."/header.phtml"; ?>
-    <main>
-        <?php include VIEW_DIR."/$this->view.phtml"; ?>
+    <main class="root">
     </main>
     <!-- Start Footer -->
     <?php include VIEW_DIR."/footer.phtml"; ?>
     <!-- End Footer -->
+    <script type="module" src="/public/js/bundle.js"></script>
     <?php foreach($this->scripts as $script): ?>
-        <script type="module" src="/public/js/<?= $script ?>.js"></script>
+        <!-- <script type="module" src="/public/js/<?= $script ?>.js"></script> -->
     <?php endforeach; ?>
 
 </body>

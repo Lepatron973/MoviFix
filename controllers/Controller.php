@@ -14,7 +14,7 @@
             }else{
                 $this->view = "home";
             }
-            $this->scripts = array("main");
+            $this->scripts = array();
             $this->styles = array("style");
 
         }

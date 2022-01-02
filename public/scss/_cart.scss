@@ -1,16 +1,21 @@
 .block-cart{
-    .container{  
-        margin: 1rem;
-        color: grey;
-        padding: 1rem;
-        margin-bottom: 1rem;     
-        background-color: whitesmoke
-    }
+    
+    color: grey;
+    padding: 1rem;
+    margin-bottom: 1rem;     
+    background-color: whitesmoke;
+
     &:first-child{
         border-bottom: 1px solid grey;
     }
     .container-articles-cart{
         flex-basis: 100%;
+        margin-right: 2rem;
+        max-height: 300px;
+        overflow: auto;
+        i,.price-article,.quantity{
+            font-size: 1.5rem;
+        }
         .article{
             display: flex;
             justify-content: space-between;
@@ -20,7 +25,16 @@
                 flex-basis: 30%;
             }
             .info-article{
-                flex-basis:60%
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-basis:60%;
+                .add-one{
+                    color: green;
+                }
+                .remove-one{
+                    color: red;
+                }
             }
             .delete-article{
                 flex-basis: 10%;
@@ -58,17 +72,8 @@
             align-self: flex-start;
         }
         .container-articles-cart{
-            height: 500px;
-            overflow: auto;
             flex-basis: 60%;
-            .article{
-                .add-one{
-                    color: green;
-                }
-                .remove-one{
-                    color: red;
-                }
-            }
+            
         }
         .container-payement{
             flex-basis: 35%;

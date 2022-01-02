@@ -1,7 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import { AjaxRequest, addOneArticleToCart, removeOneArticleFromCart } from '../utilities';
-import ArticlesCart from './ArticlesCart';
-import Payement from './Payement';
+import HeadersBlock from '../components/HeaderBlock';
+import Block from '../components/Block';
+import ArticlesCart from '../components/ArticlesCart';
+import Payement from '../components/Payement';
 
 const AppCart = () => {
     const [cart, setCart] = useState([]);
@@ -19,8 +21,12 @@ const AppCart = () => {
     },[])
     return (
         <>
-          <ArticlesCart articles={cart} removeOne={removeOneArticleFromCart} addOne={addOneArticleToCart}/>
-          <Payement articles={cart}/>  
+            <HeadersBlock title="Panier"/>
+            <Block blockNumber="2" customClass="block-cart" children={[
+                <ArticlesCart articles={cart} removeOne={removeOneArticleFromCart} addOne={addOneArticleToCart}/>,
+                <Payement articles={cart}/>  
+            ]}
+            />
         </>
     );
 };

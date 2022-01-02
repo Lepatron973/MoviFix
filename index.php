@@ -1,9 +1,7 @@
 <?php
     session_start();
 
-    // Mettre le mod "debug" pour afficher les erreurs;
-    putenv("mod=debug");
-
+    
     // MISE EN PLACE DES VARIABLES GLOBALES
     $GLOBALS["exceptions_message"] = [];
     $GLOBALS["exceptions"] = [];
@@ -17,7 +15,11 @@
     require_once "./controllers/NotificationController.php";
     require_once "./controllers/Controller.php";
     require_once "./models/Database.php";
+
     
+    // Mettre le mod "debug" pour afficher les erreurs;
+    $mode = MOD;
+    putenv("mod=$mode");
     // MISE EN PLACE DE LA GESTION DES ERREURS PERSONALISÉ
     use \Controllers\ErrorController;
     ErrorController::setErrorReporting();

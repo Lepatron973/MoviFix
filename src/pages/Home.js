@@ -4,5 +4,5 @@ import AppHome from "../app/AppHome";
 
 ReactDOM.render(
    <AppHome />
-   ,document.querySelector(".home")
+   ,document.querySelector(".root")
 )

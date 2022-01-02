@@ -40,7 +40,9 @@
         }   
         .movies{
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: no-wrap;
+            max-width: 100%;
+            overflow: scroll;
             .movie{
                
                 margin: 1rem;
@@ -152,7 +154,10 @@
     }
 }
 @media screen and (min-width: 800px){
-    .movie{
-        flex-basis: 15%;
+    .movies{
+        flex-wrap: wrap;
+        .movie{
+            flex-basis: 15%;
+        }
     }
 }

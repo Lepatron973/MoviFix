@@ -4,5 +4,5 @@ import AppProfile from "../app/AppProfile";
 
 ReactDOM.render(
    <AppProfile />
-   ,document.querySelector(".profile")
+   ,document.querySelector(".root")
 )

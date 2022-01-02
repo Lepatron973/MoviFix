@@ -17,7 +17,7 @@ const Slider = (props) => {
         .then((res)=>{
             setmovies(res);
         })
-        console.log("load slider component")
+       
     },[])
     
     return (

@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM  from "react-dom";
-import AppCart from "../components/AppCart";
+import AppCart from "../app/AppCart";
 
 ReactDOM.render(
     <>
         <AppCart />
-    </>, document.querySelector(".block-cart")
+    </>, document.querySelector(".root")
 )

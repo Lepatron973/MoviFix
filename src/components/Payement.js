@@ -4,7 +4,7 @@ const Payement = (props) => {
     let totalAmount = 0;
     props.articles.map(article =>( totalAmount += Number(article.price)));
     return (
-        <div className='container container-payement'>
+        <div className='container-payement'>
             <div>
                 <strong>Total </strong>
                 <span>articles: </span>

@@ -5,6 +5,6 @@ import AppDetail from "../app/AppDetail";
 ReactDOM.render(
     <React.StrictMode>
         <AppDetail />
-    </React.StrictMode>, document.querySelector(".detail")
+    </React.StrictMode>, document.querySelector(".root")
 
 )

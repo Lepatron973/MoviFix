@@ -1,3 +1,7 @@
+import {capitalize} from './utilities';
+const module = capitalize(location.pathname.split('/')[1])
+import(`./pages/${module}`)
+
 const  cartAmount = document.querySelector('.cart span');
 const dismissAlertBtn = document.querySelector(".dismiss-alert");
 

@@ -4,5 +4,5 @@ import AppConnexion from "../app/AppConnexion";
 
 ReactDOM.render(
     <AppConnexion />
-    ,document.querySelector(".connexion")
+    ,document.querySelector(".root")
 )

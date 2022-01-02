@@ -3,7 +3,7 @@ import {imageSizePath } from '../utilities';
 
 const ArticlesCart = (props) => {
     return (
-        <div className='container container-articles-cart'>
+        <div className='container-articles-cart'>
             <p><strong>My Cart</strong></p>
             {
                 props.articles.map(article=>(

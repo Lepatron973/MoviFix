@@ -5,6 +5,6 @@ import AppInscription from "../app/AppInscription";
 ReactDOM.render(
     <React.StrictMode>
         <AppInscription />
-    </React.StrictMode>, document.querySelector(".inscription")
+    </React.StrictMode>, document.querySelector(".root")
 
 )

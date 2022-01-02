@@ -6,7 +6,7 @@ import Slider from '../components/Slider';
 
 const AppHome = () => {
     return (
-        <div>
+        <>
             
             <Block blockNumber="1" customClass="" children={[<ElementB1 />]}/>
             <Block blockNumber="2" customClass="" children={
@@ -18,7 +18,7 @@ const AppHome = () => {
             <Block blockNumber="3" customClass="" children={[<Slider title="Vous aimeriez aussi"/>]}/>
             <Block blockNumber="4" customClass="banner" children={[<Banner1 />]}/>        
             
-        </div>
+        </>
     );
 };
 const ElementB1 = () => {

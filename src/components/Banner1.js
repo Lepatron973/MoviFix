@@ -1,12 +1,13 @@
 import React, {useState,useEffect} from 'react';
-import {API_KEY,movieEndpoint,host, imageSizePath ,language} from '../utilities';
+import {API_KEY,getMovieEndpoint,host, imageSizePath ,language} from '../utilities';
 
    
 
 const Banner1 = () => {
+    let movieEndPoint = getMovieEndpoint('latest')
     const [movie, setmovies] = useState([]);
     const [img, setImg] = useState(<img src="https://picsum.photos/200/300" alt="image aléatoire" />);
-    const req = `${host.api}/${movieEndpoint.latest}?api_key=${API_KEY}&${language}}`;
+    const req = `${host.api}/${movieEndPoint}?api_key=${API_KEY}&${language}}`;
     useEffect(()=>{
     
         const result = fetch(req)
@@ -19,7 +20,7 @@ const Banner1 = () => {
                 setImg(<img src={`${imageSizePath}/w300/${res.poster_path}`} alt={res.title} />)
         })
     
-        console.log("load banner component")
+        
     },[])
     return (
         <>       

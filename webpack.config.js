@@ -1,15 +1,20 @@
 const path = require('path');
+const config = require('./config/config');
+console.log(config.MODE)
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  mode: "development",
-  entry: './src/pages/Home.js',
+  mode: config.MODE,
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'public/js'),
-    filename: 'home.js',
+    filename: 'bundle.js',
   },
   optimization: {
     minimize: true,
+    minimizer: [new TerserPlugin()]
   },
+  devtool: "eval",
   module: {
     rules: [
       {
