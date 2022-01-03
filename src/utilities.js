@@ -63,8 +63,8 @@ export function addMovieFromApi(req,movies,options){
       }
     })
   }
-  export function AjaxRequest(endpoint){
-
+  export function AjaxRequest(endpoint,param=""){
+    options.body = param;
     const req = new Request(ajaxPath+endpoint, options);
     return req;
   }

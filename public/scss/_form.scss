@@ -60,6 +60,13 @@ form{
                 cursor: pointer;
             }
         }
+        .alert{
+            display: none;
+            max-width: 303px;
+            margin: auto;
+            margin-top: .5rem;
+            border-radius: 5px;
+        }
     }
     @media screen and(min-width: 620px) {
         .input-icon{

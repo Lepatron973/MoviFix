@@ -4,7 +4,7 @@ import Form from '../components/Form';
 import HeaderBlock from '../components/HeaderBlock';
 import ImageForm from '../components/ImageForm';
 import Input from '../components/Input';
-import {checkRegistrationPasswordIsOk,checkValidEmail} from '../utilities';
+import {checkRegistrationPasswordIsOk,checkValidEmail,AjaxRequest, ajaxPath} from '../utilities';
 const AppInscription = () => {
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
@@ -13,11 +13,21 @@ const AppInscription = () => {
     const [password2, setPassword2] = useState("");
     const [status, setStatus] = useState(false);
     const [file, setFile] = useState("");
+    let alertMessage;
     const handleSubmit = (e)=> {
-        // console.log(checkRegistrationPasswordIsOk(password,password2))
+        e.preventDefault()
+        if(!checkRegistrationPasswordIsOk(password,password2)){
+            let passwordInputs = document.querySelectorAll(".password");
+            for(let input of passwordInputs){
+                input.style.borderColor = "red";
+                
+                // input.style.aftervalue = "votre mots de passe doit comporter 8 charactère minimum + majuscule,minuscule,chiffre."
+            }
+        }
+        console.log()
+        const req =  AjaxRequest("test","salut");
+        fetch(req)
         console.log(checkValidEmail(email))
-       
-
     }
     return (
         <div>
@@ -38,16 +48,19 @@ const AppInscription = () => {
                     <div className="input-icon">
                         <i className="fas fa-envelope"></i>
                         <Input type="email" name="email" placeHolder="E-mail" value={email} setValue={setEmail}/>
+                        <p className="alert">{alertMessage}</p>
                      </div>,
                     <div className="input-icon">
                         <i className="fas fa-lock"></i>
                         <Input customClass="password" name="password" type={status ? "text" : "password" } placeHolder="Password" value={password} setValue={setPassword}/>
                         <i className={status ? "fas fa-eye": "fas fa-eye-slash" } onClick={()=>{setStatus(!status)}}></i>
+                        <p className="alert">{alertMessage}</p>
                     </div>,
                     <div className="input-icon">
                         <i className="fas fa-lock"></i>
                         <Input customClass="password" name="confirm-password" type={status ? "text" : "password" } placeHolder="Confirmer Password" value={password2} setValue={setPassword2}/>
                         <i className={status ? "fas fa-eye": "fas fa-eye-slash" } onClick={()=>{setStatus(!status)}}></i>
+                        <p className="alert">{alertMessage}</p>
                     </div>,
                     <div className="input-icon">
                         <Input type="file" name="image" value={file} setValue={setFile} accept=".jpg, .jpeg, .png, .svg"/>

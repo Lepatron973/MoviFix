@@ -1,0 +1,32 @@
+.block-products{
+    .products{
+        display: flex;
+        justify-content: center;
+        .product{
+            border-radius: 9px;
+            padding: 0rem 0rem 2rem;
+            background-color: whitesmoke;
+            color: black;
+            font-size: 1.8rem;
+            
+            .product-header{
+                padding: 2rem;
+                border-top-left-radius: 9px;
+                border-top-right-radius: 9px;
+                text-align: center;
+                background-color: gray;
+            }
+            .product-body{
+                padding: 1rem 9rem;
+                text-align: center;
+                ul{
+                    padding: 0;
+                    padding-bottom: 2rem;
+                }
+                a{
+                    color: black;
+                }
+            }
+        }
+    }
+}

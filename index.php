@@ -170,6 +170,11 @@
                 $controller->addScript($page['name']);
                 $controller->display();
             break;
+            case "pricing":
+                $controller = new Controllers\MovieController($page);
+                $controller->addScript($page['name']);
+                $controller->display();
+            break;
             case "privacy-policy":
                 $controller = new Controllers\MovieController($page);
                 
