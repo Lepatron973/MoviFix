@@ -120,6 +120,13 @@ form {
       padding: 1.5rem 0 1.5rem 3rem;
       min-width: 80%;
       border-radius: 6px; }
+    form .input-icon .alert {
+      display: none;
+      margin: auto;
+      margin-top: .5rem;
+      background-color: #c96262;
+      max-width: 84%;
+      border-radius: 5px; }
     form .input-icon input[type=submit] {
       padding: 1rem 0;
       text-align: center;

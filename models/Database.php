@@ -32,7 +32,7 @@
             }
             $sql = substr_replace($sql,')', strlen($sql)-1);
             $req = $this->bdd->prepare($sql);
-            var_dump($req);
+            // var_dump($req);
             foreach($ref as $value){
                 switch($post[$value]){
                     
