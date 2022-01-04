@@ -4,7 +4,7 @@ import Form from '../components/Form';
 import HeaderBlock from '../components/HeaderBlock';
 import ImageForm from '../components/ImageForm';
 import Input from '../components/Input';
-import {checkRegistrationPasswordIsOk,checkValidEmail,AjaxRequest, ajaxPath} from '../utilities';
+import {alertMessage, checkRegistrationPasswordIsOk,checkValidEmail} from '../utilities';
 const AppInscription = () => {
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
@@ -15,19 +15,16 @@ const AppInscription = () => {
     const [file, setFile] = useState("");
     let alertMessage;
     const handleSubmit = (e)=> {
-        e.preventDefault()
-        if(!checkRegistrationPasswordIsOk(password,password2)){
-            let passwordInputs = document.querySelectorAll(".password");
-            for(let input of passwordInputs){
-                input.style.borderColor = "red";
-                
-                // input.style.aftervalue = "votre mots de passe doit comporter 8 charactère minimum + majuscule,minuscule,chiffre."
-            }
+        if(!checkValidEmail(email)){
+            alertMessage(document.querySelectorAll(".email+.alert"),"veuillez rentrer une addresse valide")
+            e.preventDefault()
+            return;
         }
-        console.log()
-        const req =  AjaxRequest("test","salut");
-        fetch(req)
-        console.log(checkValidEmail(email))
+        if(!checkRegistrationPasswordIsOk(password,password2)){
+            alertMessage(document.querySelectorAll(".password+i+.alert"), "Le mot de passe doit contenir: 8 charactères, majuscule, minuscule, chiffre")
+            e.preventDefault()
+            return;
+        }      
     }
     return (
         <div>
@@ -47,20 +44,20 @@ const AppInscription = () => {
                     </div>,
                     <div className="input-icon">
                         <i className="fas fa-envelope"></i>
-                        <Input type="email" name="email" placeHolder="E-mail" value={email} setValue={setEmail}/>
-                        <p className="alert">{alertMessage}</p>
+                        <Input customClass="email" type="email" name="email" placeHolder="E-mail" value={email} setValue={setEmail}/>
+                        <p className="alert"></p>
                      </div>,
                     <div className="input-icon">
                         <i className="fas fa-lock"></i>
                         <Input customClass="password" name="password" type={status ? "text" : "password" } placeHolder="Password" value={password} setValue={setPassword}/>
                         <i className={status ? "fas fa-eye": "fas fa-eye-slash" } onClick={()=>{setStatus(!status)}}></i>
-                        <p className="alert">{alertMessage}</p>
+                        <p className="alert"><span className="test"></span></p>
                     </div>,
                     <div className="input-icon">
                         <i className="fas fa-lock"></i>
                         <Input customClass="password" name="confirm-password" type={status ? "text" : "password" } placeHolder="Confirmer Password" value={password2} setValue={setPassword2}/>
                         <i className={status ? "fas fa-eye": "fas fa-eye-slash" } onClick={()=>{setStatus(!status)}}></i>
-                        <p className="alert">{alertMessage}</p>
+                        <p className="alert"><span className="test"></span></p>
                     </div>,
                     <div className="input-icon">
                         <Input type="file" name="image" value={file} setValue={setFile} accept=".jpg, .jpeg, .png, .svg"/>

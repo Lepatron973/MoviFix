@@ -120,6 +120,24 @@ export function addMovieFromApi(req,movies,options){
     string = string.replace(string.charAt(0),firstLetterUpper);
     return string;
   }
+  export function alertMessage(domElement, message){
+    let i = 0;
+    console.log(domElement)
+    console.log(Array.isArray(domElement))
+
+    for(let element of domElement){
+      element.style.display = "block";
+      element.innerHTML = message
+      setTimeout(()=> {
+        element.style.display = "none";
+        element.innerHTML = message
+      },4000)
+    }
+    
+   
+
+
+  }
   export function getMovieEndpoint(endpoint,id = null){
     let movieEndpoint = {
       detail: `movie/${id}`,
