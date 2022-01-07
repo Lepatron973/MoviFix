@@ -45,13 +45,14 @@
             </a>
         </div>
         <div class="nav-p2">
-
+            <!-- AFFICHAGE MENU POUR MOBILE -->
             <div class="dropdown">
                 <button class="dropbtn"><i class="fas fa-bars"></i>
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                 <?php if(!$_SESSION['user']['status']): ?>
+                    <a href="/pricing">Packs</a>
                     <a href="/inscription" class="button">SignUp</a>
                     <a href="/connexion" class="button">SignIn</a>
                 <?php else: ?>

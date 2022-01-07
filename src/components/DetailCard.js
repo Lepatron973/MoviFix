@@ -52,9 +52,9 @@ const DetailCard = (props) => {
                         <p>revenu : {movie.revenue} $</p>
                     </div>
                 </div>
-                <a href={`/?path=addCart&id=${movie.id}`} className="add-cart-content">
+                {/* <a href={`/?path=addCart&id=${movie.id}`} className="add-cart-content">
                     <i className="fas addCart fa-cart-plus" index={movie.id}></i>
-                </a>
+                </a> */}
             </div>
             <Iframe display={display} video={movie.video} setDisplay={setDisplay}/>
         </>
