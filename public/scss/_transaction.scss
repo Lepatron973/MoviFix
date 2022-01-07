@@ -1,0 +1,201 @@
+
+.transaction{
+    color: black;
+    background-color: #ffffff;
+    .display{
+        display: block;
+    }
+    .hide{
+        display: none;
+    }
+    header{
+        background: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        padding: 3rem;
+        border-bottom: double 1rem orange;
+        align-items: center;
+        img{
+            height: 50px;
+        }
+    }
+    .block-3-content.transaction{
+       display: flex;
+       flex-direction: column;
+       .seller-info{
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+           flex-basis: 30%;
+           margin: 1rem;
+        
+           ul{
+               padding: 0;
+               padding-right: 1rem;
+               li{
+                   border: 1px solid black;
+                   display: flex;
+                   
+                   span{
+                       display: block;
+                       padding: 2rem;
+                   }
+                   .name{
+                       flex-basis: 45%;
+                   }
+                   .result{
+                        flex-basis: 45%;
+                       background-color: grey;
+                       color: white;
+                   }
+               }
+           }
+           .mentions{
+               
+               display: flex;
+               justify-content: center;
+               align-items: center ;
+               i{
+                   margin: 1rem;
+               }
+           }
+       }
+       .card-info{
+           margin: 1rem;
+           display: flex;
+           flex-direction: column;
+           flex-basis: 70%;
+           justify-content: space-between;
+           align-items: center;
+           .header{
+               .accepted{
+                   display: flex;
+                   padding: 0;
+                   li{
+                       max-width: 200px;
+                       img{
+                           max-width: 180px;
+                           max-height: 169px;
+                       }
+                   }
+               }
+               p{
+                   text-align: center;
+               }
+           }
+           .mentions{
+               display: flex;
+               align-items:center ;
+               border-top: 1px solid grey ;
+               border-bottom: 1px solid grey ;
+               padding: 2rem 0;
+               margin-bottom: 2rem;
+               align-self: flex-start;
+               width: 100%;
+               i{
+                   margin-right: 1rem;
+                   font-size: 5rem;
+               }
+               margin-top:1rem
+           }
+           form{
+               padding: 0 4rem;
+            input[type=number] {
+                -moz-appearance: textfield;
+                min-width: 50px;
+            }
+            .input-icon{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+             
+            /* Chrome */
+            input::-webkit-inner-spin-button,
+            input::-webkit-outer-spin-button { 
+                -webkit-appearance: none;
+                margin:0;
+            }
+             
+            /* Opéra*/
+            input::-o-inner-spin-button,
+            input::-o-outer-spin-button { 
+                -o-appearance: none;
+                margin:0
+            }
+            label{
+                
+            }
+            .month,.year{
+                max-width: 70px;
+            }
+            .cryptograme{
+                max-width: 100px;
+            }
+            .submit{
+                padding: 1rem 0;
+                text-align: center;
+                border-radius: 10% / 50%;
+                font-size: 2rem;
+                background-color: grey;
+                margin-top: 1rem;
+                min-width: 80%;
+                color: black;
+                
+            }
+           }
+       }
+       .transaction-state{
+           display: flex;
+           justify-content: center;
+           flex-basis: 70%;
+           .transaction-status{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .transaction-done{
+
+                img{
+                    width: 100px;
+                }
+                a{
+                    color: blue;
+                }
+                p{
+                    padding-left: 1rem;
+                }
+            }
+            .transaction-progress{
+
+                img{
+                    width: 300px;
+                }
+                a{
+                    color: blue;
+                }
+            }
+       }
+       @media screen and(min-width: 920px) {
+            flex-direction: row;
+            .seller-info{
+                border-right: 4px solid black;
+                .mentions{
+                    padding-top: 25rem;
+                }
+            }
+            .card-info{
+                form{
+                    padding: 0 7rem;
+                }
+            }
+       }
+       
+    }
+    .footer{
+        padding: 1rem;
+        border-top: double 1rem orange;
+        text-align: center;
+    }
+}

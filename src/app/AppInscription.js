@@ -13,7 +13,6 @@ const AppInscription = () => {
     const [password2, setPassword2] = useState("");
     const [status, setStatus] = useState(false);
     const [file, setFile] = useState("");
-    let alertMessage;
     const handleSubmit = (e)=> {
         if(!checkValidEmail(email)){
             alertMessage(document.querySelectorAll(".email+.alert"),"veuillez rentrer une addresse valide")

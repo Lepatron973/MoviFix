@@ -1,22 +1,34 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import { AjaxRequest } from '../utilities';
 
-const ProductCard = () => {
+const ProductCard = (props) => {
+    const req = AjaxRequest("getCart");
+    const [cartEmpty, setcartEmpty] = useState(true)
+    useEffect(() => {
+        fetch(req)
+        .then(res=>res.json())
+        .then(res =>{
+            if(res.length > 0)
+                setcartEmpty(false)
+        })
+    }, []);
+    
     return (
         <div className="product">
             <div className="product-header">
-                produt name
+                {props.product.product_name}
             </div>
             <div  className="product-body">
                 <div className="price">
-                    <span> 10$</span>/mois
+                    <span> {props.product.price}$</span>/mois
                 </div>
                 <ul className="main-functionalities">
-                    <li>lorem</li>
-                    <li>lorem</li>
-                    <li>lorem</li>
+                    {props.product.func_name.map(prop => 
+                        <li key={prop}>{prop}</li>
+                    )}
                 </ul>
                 <div>
-                    <a href="" className="button">Souscrire</a>
+                    <a href="" disabled="disabled" className="button" index={props.product.id_product} onClick={cartEmpty ? props.addOne : (e)=>{e.preventDefault();alert("Votre panier est remplis")}}>Souscrire</a>
                 </div>
             </div>
         </div>

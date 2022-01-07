@@ -14,7 +14,7 @@ const Movie = (props) => {
     const [movieState, setMovies] = useState([]);
     const req = `${host.api}/${getMovieEndpoint(props.endpoint)}?api_key=${API_KEY}&${language}&page=${props.pageNumber}`
     useEffect(()=>{
-      console.log("hello")
+      
       
       fetch(req)
       .then((res)=>{

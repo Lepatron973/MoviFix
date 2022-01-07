@@ -64,6 +64,8 @@ export function addMovieFromApi(req,movies,options){
     })
   }
   export function AjaxRequest(endpoint,param=""){
+    
+    param = JSON.stringify(param)
     options.body = param;
     const req = new Request(ajaxPath+endpoint, options);
     return req;
@@ -86,11 +88,10 @@ export function addMovieFromApi(req,movies,options){
   }
   export function addOneArticleToCart(e){
       e.preventDefault();
-      console.log(e.target)
-      options.body = JSON.stringify(e.target.getAttribute("index"));
-      let req = AjaxRequest("addCart");
+      let req = AjaxRequest("addCart",e.target.getAttribute("index"));
+      console.log(req)
       fetch(req)
-      .then((res)=>{ location.reload()})
+     .then((res)=>{ location.reload()})
   }
   export function checkValidPassword(pass1){
     const regex = /(?=.*[a-z])(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*#?&ù+=£])[a-zA-Z0-9@$!%*#?&ù+£=]{8,}/

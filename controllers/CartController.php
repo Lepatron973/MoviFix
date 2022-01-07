@@ -1,7 +1,7 @@
 <?php
     namespace Controllers;
 
-    class CartController extends MovieController{
+    class CartController extends ProductController{
         private $cart;
         function __construct(array $page){
             parent:: __construct($page);
@@ -17,8 +17,10 @@
             setcookie("panier",json_encode($cart),$this->expireDate,"/");
         }
         public function addToCart(string $id):void{
-            array_push($this->cart,$id);
-            setcookie("panier",json_encode($this->cart),$this->expireDate,"/");
+            if(count($this->getCart()) < 1){
+                array_push($this->cart,$id);
+                setcookie("panier",json_encode($this->cart),$this->expireDate,"/");
+            }
         }
         public function getcookie($cookieName){
             
@@ -33,11 +35,14 @@
 
             foreach($this->cart as $id){
                 
-                    $movie = $this->pullOneMovie($id);
+                    $product = $this->pullOneProduct($id);
                     $newCart['id'] = $id;
-                    $newCart['title'] = $movie['title'];
-                    $newCart['price'] = $movie['price'];
-                    $newCart['image'] = $movie['image'];
+                    $newCart['title'] = $product['product_name'];
+                    $newCart['price'] = $product['price'];
+                    // $newCart['image'] = $product['image'];
+                    foreach($product["props"] as $props){
+                        $newCart['props'][] = $props;
+                    }
                     $newCart['quantity'] = 1;
 
                 if(!in_array($id,$idRef)){

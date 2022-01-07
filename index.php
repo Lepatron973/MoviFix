@@ -171,8 +171,14 @@
                 $controller->display();
             break;
             case "pricing":
+                $page["model"] = new Models\Products();
+                $controller = new Controllers\ProductController($page);
+                //var_dump($controller->pullAllProducts());
+                $controller->display();
+            break;
+            case "transaction":
                 $controller = new Controllers\MovieController($page);
-                $controller->addScript($page['name']);
+                $controller->addStyle($page['name']);
                 $controller->display();
             break;
             case "privacy-policy":

@@ -4,7 +4,7 @@
     class Database{
         function __construct(){
             try {
-                $this->bdd = new \PDO("mysql:dbname=" .BDD_CONNECT['dbname']. "host=" . BDD_CONNECT['host'], BDD_CONNECT['user'], BDD_CONNECT['password']);
+                $this->bdd = new \PDO("mysql:dbname=" .BDD_CONNECT['dbname']. "charset=utf8;host=" . BDD_CONNECT['host'], BDD_CONNECT['user'], BDD_CONNECT['password']);
             } catch (\PDOException $e) {
                 \Controllers\ErrorController::connexionFailed($e);
             }

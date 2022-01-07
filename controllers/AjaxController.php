@@ -43,7 +43,7 @@
                 case "getCart":
                     $page = [
                         "name"=>"cart",
-                        "model"=>new \Models\Movies()
+                        "model"=>new \Models\Products()
                     ];
                     $this->setController(new \Controllers\CartController($page));
                     $cart = $this->controller->getCart();
@@ -52,7 +52,7 @@
                 case "removeOneArticleFromCart":
                     $page = [
                         "name"=>"cart",
-                        "model"=>new \Models\Movies()
+                        "model"=>new \Models\Products()
                     ];
                     $this->setController(new \Controllers\CartController($page));
                     $cart = $this->controller->removeOneArticle($json);
@@ -62,17 +62,41 @@
                 case "addCart":
                     $page = [
                         "name"=>"cart",
-                        "model"=>new \Models\Movies()
+                        "model"=>new \Models\Products()
                     ];
                     $this->setController(new \Controllers\CartController($page));
                     $this->controller->setCart();//permet de mettre à jour le panier
                     $this->controller->addToCart($json);
                 break;
+                case "getProducts":
+                    $page = [
+                        "name"=>"pricing",
+                        "model"=>new \Models\Products()
+                    ];
+                    $this->setController(new \Controllers\ProductController($page));
+                    $products = $this->controller->pullAllProducts();
+                    $this->sendJsonData($products);
+                break;
+                case "passOrder":
+                    $page = [
+                        "name"=>"pricing",
+                        "model"=>new \Models\Products()
+                    ];
+                   
+                    $this->setController(new \Controllers\ProductController($page));
+                    if($this->controller->passOrder($json)){
+                        $this->setController(new \Controllers\CartController($page));
+                        $this->controller->removeAllArticles();
+                    }
+
+                   
+                    
+                break;
                 case "getProfile":
                     $this->sendJsonData($_SESSION['user']);
                 break;
                 default:
-                    echo "default:" . var_dump($action);
+                    // echo "default:" . var_dump($action);
                 break;
             }
         }

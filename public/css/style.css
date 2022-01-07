@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .alert {
   padding: 1rem;
   padding: 1rem;
@@ -120,6 +121,13 @@ form {
       padding: 1.5rem 0 1.5rem 3rem;
       min-width: 80%;
       border-radius: 6px; }
+    form .input-icon .alert {
+      display: none;
+      margin: auto;
+      margin-top: .5rem;
+      background-color: #c96262;
+      max-width: 84%;
+      border-radius: 5px; }
     form .input-icon input[type=submit] {
       padding: 1rem 0;
       text-align: center;
@@ -525,7 +533,8 @@ a {
       text-align: center; }
       .block-products .products .product .product-body ul {
         padding: 0;
-        padding-bottom: 2rem; }
+        padding-bottom: 2rem;
+        text-align: left; }
       .block-products .products .product .product-body a {
         color: black; }
 
@@ -543,6 +552,147 @@ a {
     .manage-movie .del-movie-content:nth-child(2), .manage-movie .del-movie-content:nth-child(1) {
       margin: auto;
       text-align: center; }
+
+.transaction {
+  color: black;
+  background-color: #ffffff; }
+  .transaction .display {
+    display: block; }
+  .transaction .hide {
+    display: none; }
+  .transaction header {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+    border-bottom: double 1rem orange;
+    align-items: center; }
+    .transaction header img {
+      height: 50px; }
+  .transaction .block-3-content.transaction {
+    display: flex;
+    flex-direction: column; }
+    .transaction .block-3-content.transaction .seller-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-basis: 30%;
+      margin: 1rem; }
+      .transaction .block-3-content.transaction .seller-info ul {
+        padding: 0;
+        padding-right: 1rem; }
+        .transaction .block-3-content.transaction .seller-info ul li {
+          border: 1px solid black;
+          display: flex; }
+          .transaction .block-3-content.transaction .seller-info ul li span {
+            display: block;
+            padding: 2rem; }
+          .transaction .block-3-content.transaction .seller-info ul li .name {
+            flex-basis: 45%; }
+          .transaction .block-3-content.transaction .seller-info ul li .result {
+            flex-basis: 45%;
+            background-color: grey;
+            color: white; }
+      .transaction .block-3-content.transaction .seller-info .mentions {
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .transaction .block-3-content.transaction .seller-info .mentions i {
+          margin: 1rem; }
+    .transaction .block-3-content.transaction .card-info {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-basis: 70%;
+      justify-content: space-between;
+      align-items: center; }
+      .transaction .block-3-content.transaction .card-info .header .accepted {
+        display: flex;
+        padding: 0; }
+        .transaction .block-3-content.transaction .card-info .header .accepted li {
+          max-width: 200px; }
+          .transaction .block-3-content.transaction .card-info .header .accepted li img {
+            max-width: 180px;
+            max-height: 169px; }
+      .transaction .block-3-content.transaction .card-info .header p {
+        text-align: center; }
+      .transaction .block-3-content.transaction .card-info .mentions {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        align-self: flex-start;
+        width: 100%;
+        margin-top: 1rem; }
+        .transaction .block-3-content.transaction .card-info .mentions i {
+          margin-right: 1rem;
+          font-size: 5rem; }
+      .transaction .block-3-content.transaction .card-info form {
+        padding: 0 4rem;
+        /* Chrome */
+        /* Opéra*/ }
+        .transaction .block-3-content.transaction .card-info form input[type=number] {
+          -moz-appearance: textfield;
+          min-width: 50px; }
+        .transaction .block-3-content.transaction .card-info form .input-icon {
+          display: flex;
+          flex-direction: column;
+          align-items: center; }
+        .transaction .block-3-content.transaction .card-info form input::-webkit-inner-spin-button,
+        .transaction .block-3-content.transaction .card-info form input::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0; }
+        .transaction .block-3-content.transaction .card-info form input::-o-inner-spin-button,
+        .transaction .block-3-content.transaction .card-info form input::-o-outer-spin-button {
+          -o-appearance: none;
+          margin: 0; }
+        .transaction .block-3-content.transaction .card-info form .month, .transaction .block-3-content.transaction .card-info form .year {
+          max-width: 70px; }
+        .transaction .block-3-content.transaction .card-info form .cryptograme {
+          max-width: 100px; }
+        .transaction .block-3-content.transaction .card-info form .submit {
+          padding: 1rem 0;
+          text-align: center;
+          border-radius: 10% / 50%;
+          font-size: 2rem;
+          background-color: grey;
+          margin-top: 1rem;
+          min-width: 80%;
+          color: black; }
+    .transaction .block-3-content.transaction .transaction-state {
+      display: flex;
+      justify-content: center;
+      flex-basis: 70%; }
+      .transaction .block-3-content.transaction .transaction-state .transaction-status {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; }
+      .transaction .block-3-content.transaction .transaction-state .transaction-done img {
+        width: 100px; }
+      .transaction .block-3-content.transaction .transaction-state .transaction-done a {
+        color: blue; }
+      .transaction .block-3-content.transaction .transaction-state .transaction-done p {
+        padding-left: 1rem; }
+      .transaction .block-3-content.transaction .transaction-state .transaction-progress img {
+        width: 300px; }
+      .transaction .block-3-content.transaction .transaction-state .transaction-progress a {
+        color: blue; }
+    @media screen and (min-width: 920px) {
+      .transaction .block-3-content.transaction {
+        flex-direction: row; }
+        .transaction .block-3-content.transaction .seller-info {
+          border-right: 4px solid black; }
+          .transaction .block-3-content.transaction .seller-info .mentions {
+            padding-top: 25rem; }
+        .transaction .block-3-content.transaction .card-info form {
+          padding: 0 7rem; } }
+  .transaction .footer {
+    padding: 1rem;
+    border-top: double 1rem orange;
+    text-align: center; }
 
 .block-profil-content .profil-image {
   margin: auto;
@@ -606,7 +756,7 @@ a {
       align-items: center; }
     .block-cart .container-payement .btn-payement-container {
       background-color: #5b6e3d;
-      justify-content: center;
+      text-align: center;
       padding: 1rem; }
     .block-cart .container-payement ul {
       display: flex;

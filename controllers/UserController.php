@@ -14,11 +14,12 @@
             if(!empty($userData)){
 
                 $_SESSION['user'] = array(
-                    "id" => $userData['id'],
+                    "id" => $userData['id_user'],
                     "firstname" => $userData['firstname'],
                     "lastname" => $userData['lastname'],
                     "email" => $userData['email'],
                     "image" => $userData['image'],
+                    "access" => $userData['access'],
                     "status" => true
                 );
             }
