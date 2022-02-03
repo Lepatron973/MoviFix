@@ -309,6 +309,12 @@ header {
     margin: 1rem; }
     .block-2 .block-2-content .element-b2 .sort-input label {
       margin-bottom: 1rem; }
+  .block-2 .block-2-content .element-b2 .information {
+    background: #fff;
+    color: red;
+    border: 1px solid #e4d804;
+    border-radius: 7px;
+    padding: 1rem; }
   .block-2 .block-2-content .element-b2 ul {
     display: flex; }
     .block-2 .block-2-content .element-b2 ul li {

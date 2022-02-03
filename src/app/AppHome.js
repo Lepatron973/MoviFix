@@ -3,7 +3,7 @@ import Banner1 from '../components/Banner1';
 import Block from '../components/Block';
 import Movie from '../components/Movie';
 import Slider from '../components/Slider';
-import { host,getMovieEndpoint,language,API_KEY } from '../utilities';
+import { host,getMovieEndpoint,language,API_KEY, AjaxRequest } from '../utilities';
 
 const AppHome = () => {
     const sort = (e) => {
@@ -47,30 +47,64 @@ const ElementB1 = () => {
     );
 };
 const ElementB2 = (props) => {
-    return (
+    const req = AjaxRequest("getProfile");
+    const [profile, setProfile] = useState({
+        "id": 0,
+        "firstname": "",
+        "lastname": "",
+        "email": "",
+        "image": "",
+        "access": 0,
+        "status": false
+      });
+    useEffect(() => {
+       fetch(req)
+       .then(res=>res.json())
+       .then(res=>{
+           if(res.access != undefined){
+            setProfile((prevState)=>({...prevState,id:res.id,access:res.access}))
+           }
+       })
+    }, []);
+    console.log(profile)
+    if(profile.access == 0){
+        return(
+
         <div className="element-b2">
-            <h2>
-                {props.title}
-            </h2>
-            <div className="sort-input">
-                <label>catégorie</label>
-                <select name="trie" id="sortForm">
-                    <option value="popular" onClick={props.action}>Les plus populaires</option>
-                    <option value="nowPlaying" onClick={props.action}>Au cinéma</option>
-                    <option value="topRated" onClick={props.action}>Mieux notées</option>
-                    <option value="upcoming" onClick={props.action}>À venir</option>
-                </select>
+                <h2>
+                    {props.title}
+                </h2>
+                <div className="sort-input">
+                   <p  className="information">Veuillez souscrire à un pack afin d'avoir accès aux fonctionnalités du site</p>
+                </div>
             </div>
-            <div className="sort-input">
-                <label>pages: {props.pageNumber} /{props.maxPages}</label>
-                <input type="number" value={props.pageNumber} onChange={props.setPageNumber}/>
+        )
+    }else{
+        return (
+            <div className="element-b2">
+                <h2>
+                    {props.title}
+                </h2>
+                <div className="sort-input">
+                    <label>catégorie</label>
+                    <select name="trie" id="sortForm">
+                        <option value="popular" onClick={props.action}>Les plus populaires</option>
+                        <option value="nowPlaying" onClick={props.action}>Au cinéma</option>
+                        <option value="topRated" onClick={props.action}>Mieux notées</option>
+                        <option value="upcoming" onClick={props.action}>À venir</option>
+                    </select>
+                </div>
+                <div className="sort-input">
+                    <label>pages: {props.pageNumber} /{props.maxPages}</label>
+                    <input type="number" value={props.pageNumber} onChange={props.setPageNumber}/>
+                </div>
+                <div className="sort-input">
+                    <label>Résultats: {props.limit} /{props.maxResult}</label>
+                    <input type="number" value={props.limit} onChange={props.setLimit}/>
+                </div>
             </div>
-            <div className="sort-input">
-                <label>Résultats: {props.limit} /{props.maxResult}</label>
-                <input type="number" value={props.limit} onChange={props.setLimit}/>
-            </div>
-        </div>
-    );
+        );
+    }
 };
 
 export default AppHome;
