@@ -10,7 +10,7 @@ const AppConnexion = () => {
    
     return (
         <>
-            <HeaderBlock title="Connection"/>
+            <HeaderBlock title="Connexion"/>
             <Form method="POST" action="/connexion/1" children={[
                 <ImageForm image="/public/ressources/images/eye-sauron-bleu.jpg"/>,
                 <p className='title'>Veuillez saisir vos informations</p>,

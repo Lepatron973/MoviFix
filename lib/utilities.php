@@ -36,7 +36,7 @@
     /* 
         Fonction de gestion d'erreurs personalisée
      */
-    $errorHandler = function (int $errNo, string $errMsg, string $errFile, $errLine, array $errTraces){
+    $errorHandler = function (int $errNo, string $errMsg, string $errFile="test", $errLine=1, array $errTraces=[]){
        
         // echo "<br>" . $errMsg . " : " . $errNo . " : ". $errLine . "<br>";
         try {

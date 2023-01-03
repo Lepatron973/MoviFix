@@ -7,7 +7,7 @@
     define("SRC_PUBLIC",getcwd());
     define("MOD","debug");
     define("BDD_CONNECT", array(
-        "dbname"=>"movifix3;",
+        "dbname"=>"wewe_moviflx;",
         "host"=>"localhost",
         "user"=>"speedy",
         "password"=>"azerty"

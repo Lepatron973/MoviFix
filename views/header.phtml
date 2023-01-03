@@ -7,15 +7,15 @@
         </div>
         <nav class="nav-p2">
             <ul>
-                <li><a href="/home">Home</a></li>
+                <li><a href="/home">Accueil</a></li>
                 <!-- <li><a href="/movies">Movie</a></li> -->
                 <li><a href="/pricing">Packs</a></li>
             </ul>
         </nav>
         <div class="nav-p3">
             <?php if(!$_SESSION['user']['status']): ?>
-                <a href="/inscription" class="button">SignUp</a>
-                <a href="/connexion" class="button">SignIn</a>
+                <a href="/inscription" class="button">Inscription</a>
+                <a href="/connexion" class="button">Connexion</a>
             <?php else: ?>
                 <a href="/profile" class="button">profile</a>
                 <a href="/disconnect" class="button off"><i class="fas fa-power-off"></i></a>
@@ -53,8 +53,8 @@
                 <div class="dropdown-content">
                 <?php if(!$_SESSION['user']['status']): ?>
                     <a href="/pricing">Packs</a>
-                    <a href="/inscription" class="button">SignUp</a>
-                    <a href="/connexion" class="button">SignIn</a>
+                    <a href="/inscription" class="button">Inscription</a>
+                    <a href="/connexion" class="button">Connexion</a>
                 <?php else: ?>
                     <a href="/profile" class="button">profile</a>
                     <a href="/disconnect" class="button off"><i class="fas fa-power-off"></i></a>

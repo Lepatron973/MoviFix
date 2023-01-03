@@ -15,10 +15,10 @@
     require_once "./controllers/NotificationController.php";
     require_once "./controllers/Controller.php";
     require_once "./models/Database.php";
-
     
     // Mettre le mod "debug" pour afficher les erreurs;
-    $mode = MOD;
+    //$mode = MOD;
+    $mode="prod";
     putenv("mod=$mode");
     // MISE EN PLACE DE LA GESTION DES ERREURS PERSONALISÉ
     use \Controllers\ErrorController;
@@ -29,10 +29,9 @@
        $file =  lcfirst(str_replace('\\','/',$class));
         //   echo $class . "<br />";
         //   echo $file . "<br />";
+          if($file != "dO")
         require_once ROOT_DIR ."/". $file . '.php';
     });
-
-
     if(!isset($_SESSION["user"])){
         $_SESSION["user"] = array(
             "status" => false
@@ -48,6 +47,8 @@
             ErrorController::connexionFailed($e);
             // $model = [];
         }
+        
+
         $page = array (
             "name" => $_GET["path"],
             "model" => $model

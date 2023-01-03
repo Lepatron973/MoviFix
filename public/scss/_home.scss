@@ -58,10 +58,15 @@
             display: flex;
             flex-wrap: no-wrap;
             max-width: 100%;
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 400px;
             .movie{
                
-                margin: 1rem;
+                margin: 2rem 2.5rem;
+                border-radius: 0.6rem;
+                background-color: #222;
+                padding-bottom: 1rem;
                 figure{
                     
                     display: flex;
@@ -93,6 +98,7 @@
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
+                    padding: 0 1rem;
                 }
                
                 .movie-info-bottom{
@@ -166,7 +172,7 @@
     .movies{
         flex-wrap: wrap;
         .movie{
-            flex-basis: 15%;
+            flex-basis: 19%;
         }
     }
 }

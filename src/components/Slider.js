@@ -7,7 +7,8 @@ const Slider = (props) => {
     const [movies, setmovies] = useState([]);
     options.body = JSON.stringify(10);
     let index = 0;
-    const req = new Request(ajaxPath+"getMovies", options)
+    const req = 'https://api.themoviedb.org/3/movie/upcoming?api_key=69ba83f78c85f28287d57b3ca8f8c45c&language=fr-FR&page=1'
+    
     useEffect(()=>{
 
         const result = fetch(req)
@@ -15,7 +16,7 @@ const Slider = (props) => {
             return res.json();
         })
         .then((res)=>{
-            setmovies(res);
+            setmovies(res.results);
         })
        
     },[])
@@ -34,7 +35,7 @@ const Slider = (props) => {
                 {movies.map(movie=>(
                     <SplideSlide key={index++}>
                         <div className="glide__slide slide" >
-                            <img src={`${imageSizePath}/w200/${movie.image}`} alt={movie.title} />
+                            <img src={`${imageSizePath}/w200/${movie.poster_path}`} alt={movie.title} />
                         </div>
                     </SplideSlide>
                 ))}

@@ -7,7 +7,7 @@
     "display": "standalone",
     "background_color": "red",
     "theme_color": "red",
-    "description": "L'application qui vous aide à psser une bonne soiré en trouvant un bon film  !",
+    "description": "L'application qui vous aide à passer une bonne soiré en trouvant un bon film  !",
     "orientation": "portrait-primary",
     "scope": "/",
     "icons": [

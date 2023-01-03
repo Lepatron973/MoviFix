@@ -4,8 +4,8 @@ import {API_KEY,getMovieEndpoint,host, imageSizePath ,language} from '../utiliti
    
 
 const Banner1 = () => {
-    let movieEndPoint = getMovieEndpoint('latest')
-    const [movie, setmovies] = useState([]);
+    let movieEndPoint = getMovieEndpoint('topRated')
+    const [movie, setmovie] = useState([]);
     const [img, setImg] = useState(<img src="https://picsum.photos/200/300" alt="image aléatoire" />);
     const req = `${host.api}/${movieEndPoint}?api_key=${API_KEY}&${language}}`;
     useEffect(()=>{
@@ -15,7 +15,9 @@ const Banner1 = () => {
             return res.json();
         })
         .then((res)=>{
-            setmovies(res);
+            res = res.results[0];
+            console.log(res)
+            setmovie(res);
             if(res.poster_path != null)
                 setImg(<img src={`${imageSizePath}/w300/${res.poster_path}`} alt={res.title} />)
         })
@@ -24,18 +26,17 @@ const Banner1 = () => {
     },[])
     return (
         <>       
+            <h3>Le Mieux Noté ce mois-ci</h3>
             <div className="banner-image" key="1">
                {img}
             </div>      
             <div>
-                <h3>Derniere sortie</h3>
+                <h3> {movie.title} </h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor.
-                    Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor.
-                    Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor.
+                    {movie.overview}
                 </p>
-                <p>Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor.</p>
-                <p>Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor.</p>
+                <p>Note: {movie.vote_average} / 10</p>
+                <p>Nombre de Votes: {movie.vote_count} </p>
             </div> 
         </>
     );

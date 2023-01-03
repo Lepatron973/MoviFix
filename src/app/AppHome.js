@@ -31,7 +31,7 @@ const AppHome = () => {
                     <Movie endpoint={sorted} pageNumber={pageNumber} setMaxPages={setMaxPages} setMaxResult={setMaxResult} limit={limit}/>
                 ]}
             />
-            <Block blockNumber="3" customClass="" children={[<Slider title="Vous aimeriez aussi"/>]}/>
+            <Block blockNumber="3" customClass="" children={[<Slider title="Bientôt à l'affiche"/>]}/>
             <Block blockNumber="4" customClass="banner" children={[<Banner1 />]}/>        
             
         </>
@@ -40,8 +40,8 @@ const AppHome = () => {
 const ElementB1 = () => {
     return (
         <>
-          <h1> Movies at will</h1>
-            <div><a href="http://" className="button"> watch now</a>
+          <h1> Des films à volonté</h1>
+            <div><a href="/pricing" className="button"> Souscrire</a>
           </div>  
         </>
     );
@@ -66,7 +66,6 @@ const ElementB2 = (props) => {
            }
        })
     }, []);
-    console.log(profile)
     if(profile.access == 0){
         return(
 

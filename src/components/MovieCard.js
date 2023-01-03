@@ -19,10 +19,10 @@ const MovieCard = (props) => {
             </div>
             <div className="movie-info movie-info-center">
                 <p>info</p>
-                <div>
+                {/* <div>
                     <span>lorem</span>
                     <span>lorem</span>
-                </div>
+                </div> */}
             </div>
         </div>
 
